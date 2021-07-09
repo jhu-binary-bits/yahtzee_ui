@@ -1,3 +1,22 @@
+# yahtzee_ui
+
+
+## Setup
+
+1) Download Node.js from https://nodejs.org/en/download/
+
+2) Run `npm install` from the root directory to install all dependencies
+
+## Running the app
+
+1) Run `npm start` to run the app locally on port 3000.
+
+2) Navigate to [http://localhost:3000](http://localhost:3000) to use the app.
+
+------------------------------------------------
+------------------------------------------------
+------------------------------------------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -9,6 +9,8 @@
 
 ## Running the app
 
+0) If any dependencies have been added since the last time you ran `npm install`, you might need to run the command again.
+
 1) Run `npm start` to run the app locally on port 3000.
 
 2) Navigate to [http://localhost:3000](http://localhost:3000) to use the app.

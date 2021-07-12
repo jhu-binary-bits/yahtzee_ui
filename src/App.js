@@ -1,24 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import Footer from './components/Footer/footer';
+import Header from './components/Header/header';
+import Home from './components/Home/home';
+import Player from './components/Player/player';
+import AboutUs from './components/AboutUs/aboutus';
+import Rules from './components/Rules/rules';
+import MultiPlayer from './components/MultiPlayer/multiplayer';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Skeleton of Yahtzee++
-          {/* Edit <code>src/App.js</code> and save to reload. */}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="body">
+          <Router>
+            <Header/>
+            <Switch >
+              <Route path="/" exact component={Home}/>
+              <Route path="/rules" exact component={Rules} />
+              <Route path="/aboutus" exact component={AboutUs} />
+              <Route path="/singleplayer" exact component={Player} />
+              <Route path="/multiplayer" exact component={MultiPlayer} />
+            </Switch>
+          </Router>
+        </div>
+      <div className="footer"><Footer/></div>
     </div>
   );
 }

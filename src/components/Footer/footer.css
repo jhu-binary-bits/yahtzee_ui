@@ -1,0 +1,42 @@
+.Footer {
+    bottom: 0;
+    position: fixed;
+    color: white;
+    background-color: #222;
+    width: 100%;
+    display: flex;
+    align-items:center;
+
+
+}
+
+#text {   
+    margin-left: 30%;
+    width: 80%;
+    /* text-align: center; */
+}
+
+.logo {
+    height: 100px;
+    width: 200px;
+    float: left;
+    padding: 10px;
+}
+
+#authors {
+    font-size: 11px;
+    font-family: 'Muli', sans-serif;
+}
+
+
+#MSTeams {
+    font-size: 13px;
+}
+
+
+
+
+.Footer a {color: white;}
+.Footer a:hover{color: #01490a}
+
+

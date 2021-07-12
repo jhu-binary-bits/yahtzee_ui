@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 
 
-class Score extends Component {
+class MultiPlayer extends Component {
 
     constructor(props) {
         super(props);
@@ -16,7 +16,7 @@ class Score extends Component {
     render() {
         return(
 
-            <div className="Score">
+            <div className="MultiPlayer">
 
             </div>
 
@@ -26,4 +26,4 @@ class Score extends Component {
 
 }
 
-export default Score
+export default MultiPlayer

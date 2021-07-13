@@ -16,9 +16,22 @@ class Home extends Component {
 
     testButton() {
         console.log("Clicking button")
+        window.client.send("Hello server")
+
         this.setState({
             testData: "Hello Team, Testing button to state state"
         })
+        // Creating and sending an example nested JSON message
+        let data = {}
+        data["timestamp"] = Date.now()
+        data["messageType"] = "test"
+        let payload = {}
+        payload["number"] = 1
+        payload["text"] = "two"
+        data["payload"] = payload
+
+        console.log("sending sample data")
+        window.client.send(JSON.stringify(data))
     }
 
     render() {

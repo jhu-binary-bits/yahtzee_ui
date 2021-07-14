@@ -22,16 +22,16 @@ class Home extends Component {
             testData: "Hello Team, Testing button to state state"
         })
         // Creating and sending an example nested JSON message
-        let data = {}
-        data["timestamp"] = Date.now()
-        data["messageType"] = "test"
+        let message = {}
+        message["timestamp"] = Date.now()
+        message["type"] = "chatMessage"
         let payload = {}
-        payload["number"] = 1
-        payload["text"] = "two"
-        data["payload"] = payload
+        payload["name"] = "Tom"
+        payload["text"] = "Was that a Yahtzee on the first roll?"
+        message["data"] = payload
 
         console.log("sending sample data")
-        window.client.send(JSON.stringify(data))
+        window.client.send(JSON.stringify(message))
     }
 
     render() {

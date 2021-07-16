@@ -1,8 +1,32 @@
 .Home {
-    background-color: #d7f7d6;
 
 }
 
 .Home p {
+
     
+    
+}
+
+.BeginPlayButton {
+    margin-bottom: 5%;
+    
+    
+}
+
+#beginPlay {
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+#nameArea {
+    
+}
+
+#IntroParagraph {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
 }

@@ -1,12 +1,22 @@
 .AboutUs {
 
-    align-content: center;
-    padding-top: 50px;
-    padding-bottom: 5%;
-    text-align: center;
-    
+    /* align-content: center; */
+    /* padding-top: 50px; */
+    padding-bottom: 15%;
+    /* text-align: center; */
+}
+
+#Intro {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;    
 }
 
 .AboutUs p {
     color: black;
+    display: inline;
+    text-align: center;
+    
+    
 }
+

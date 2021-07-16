@@ -1,15 +1,10 @@
-
 import React, { Component } from 'react';
-import './home.css';
+import './welcome.css';
 
-import Game from '../Game/game';
-import Welcome from './Welcome/welcome';
+class Welcome extends Component {
 
-
-class Home extends Component {
-
-    constructor(props) {
-        super(props);
+    constructor(props){
+        super(props)
         this.state = {
             testData: "Start Test",
             name: "",
@@ -19,7 +14,6 @@ class Home extends Component {
         this.testButton = this.testButton.bind(this)
         this.handleChange = this.handleChange.bind(this);
         this.beginPlay = this.beginPlay.bind(this);
-        
     }
 
     testButton() {
@@ -30,9 +24,6 @@ class Home extends Component {
     }
 
     beginPlay(bool) {
-        this.setState ({
-            playOn: bool
-        })
         console.log("Clicked begin play");
         
         
@@ -51,25 +42,17 @@ class Home extends Component {
         event.preventDefault();
       }
 
-    render() {
+
+    render(){
+
         return(
-            <div className="Home">
-
-            Click the buttons to toggle the message <br/>
-            <button onClick={this.beginPlay.bind(null, true)}>Begin Game</button>
-            { this.state.playOn ? <Game></Game> : <Welcome></Welcome>}
-            
-            
-
-                {/* <h2>Welcome</h2>
+            <div className="Welcome">
+                <h2>Welcome</h2>
                 <div id="IntroParagraph">
-                    
                     This is the Yahtzee++ project. This was created for the Software Engineering course
                     at Johns Hopkins University. Please enter your name and press "Begin Play" to start 
                     playing Yahtzee++.
-                    
                 </div>
-                    
 
                 <div id="beginPlay">
                     <form onSubmit={this.handleSubmit}>
@@ -77,21 +60,20 @@ class Home extends Component {
                             Enter Name:
                             <input type="text" value={this.state.name} onChange={this.handleChange} />
                         </label>
-                    <input className="BeginPlayButton" type="submit" value="Begin Play" onClick={this.beginPlay}/>
-                </form>     
+                        <input className="BeginPlayButton" type="submit" value="Begin Game" onClick={this.beginPlay.bind(null,true)}/>
+                        
 
-      
+                    </form>     
                 </div>
+
+
                     <button className="TestButton" onClick={this.testButton}>Test Button</button>
-                    <textarea id="nameArea" value={this.state.testData} ></textarea> */}
+                    <textarea id="nameArea" value={this.state.testData} ></textarea>
+
 
             </div>
-
-
-
         )
-
     }
 }
 
-export default Home
+export default Welcome;

@@ -62,9 +62,6 @@ class Home extends Component {
         return(
             <div className="Home">
 
-            {/* Click the buttons to toggle the message <br/> */}
-            {/* <button onClick={this.beginPlay.bind(null, true)}>Begin Game</button> */}
-
             <div id="beginPlay">
                 <div id="gameComponent" onSubmit={this.handleSubmit}>
                     <label id="nameLabel">
@@ -76,32 +73,6 @@ class Home extends Component {
 
                 </div> 
             </div>
-
-            
-
-                {/* <h2>Welcome</h2>
-                <div id="IntroParagraph">
-                    
-                    This is the Yahtzee++ project. This was created for the Software Engineering course
-                    at Johns Hopkins University. Please enter your name and press "Begin Play" to start 
-                    playing Yahtzee++.
-                    
-                </div>
-                    
-
-                <div id="beginPlay">
-                    <form onSubmit={this.handleSubmit}>
-                        <label>
-                            Enter Name:
-                            <input type="text" value={this.state.name} onChange={this.handleChange} />
-                        </label>
-                    <input className="BeginPlayButton" type="submit" value="Begin Play" onClick={this.beginPlay}/>
-                </form>     
-
-      
-                </div>
-                    <button className="TestButton" onClick={this.testButton}>Test Button</button>
-                    <textarea id="nameArea" value={this.state.testData} ></textarea> */}
 
             </div>
 

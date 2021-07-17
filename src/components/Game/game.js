@@ -36,28 +36,20 @@ class Game extends Component {
                 <div className="GameSpace">
                     <Chat
                         name={this.props.name}>
-
                         </Chat>
 
                     <Dice></Dice>
 
-
                     <Transcript
                         name={this.props.name}
                     ></Transcript>
+                    
                     <Card
                         name={this.props.name}
                         ></Card>
 
                 </div>
                 
-                
-
-
-
-
-
-
 
             </div>
 

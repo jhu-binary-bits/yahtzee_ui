@@ -11,39 +11,39 @@ class Welcome extends Component {
             playOn: props.playOn,
 
         }
-        this.testButton = this.testButton.bind(this)
-        this.handleChange = this.handleChange.bind(this);
-        this.beginPlay = this.beginPlay.bind(this);
+        // this.testButton = this.testButton.bind(this)
+        // this.handleChange = this.handleChange.bind(this);
+        // this.beginPlay = this.beginPlay.bind(this);
     }
 
-    testButton() {
-        console.log("Clicking button")
-        this.setState({
-            testData: "Hello Team, Testing button to state state"
-        })
-    }
+    // testButton() {
+    //     console.log("Clicking button")
+    //     this.setState({
+    //         testData: "Hello Team, Testing button to state state"
+    //     })
+    // }
 
-    beginPlay(bool) {
-        this.setState({
-            playOn: bool
-        })
-        console.log("Clicked begin play");
+    // beginPlay(bool) {
+    //     this.setState({
+    //         playOn: bool
+    //     })
+    //     console.log("Clicked begin play");
         
         
-    }
+    // }
 
-    handleChange(event) {
-        console.log("The name value is " + this.state.name);
-        this.setState({
-            name: event.target.value
-        });
-      }
+    // handleChange(event) {
+    //     console.log("The name value is " + this.state.name);
+    //     this.setState({
+    //         name: event.target.value
+    //     });
+    //   }
     
-      handleSubmit(event) {
-        // alert('A name was submitted: ' + this.state.name);
-        console.log("A name was submitted " + this.state.name);
-        event.preventDefault();
-      }
+    //   handleSubmit(event) {
+    //     // alert('A name was submitted: ' + this.state.name);
+    //     console.log("A name was submitted " + this.state.name);
+    //     event.preventDefault();
+    //   }
 
 
     render(){
@@ -57,20 +57,9 @@ class Welcome extends Component {
                     playing Yahtzee++.
                 </div>
 
-                {/* <div id="beginPlay">
-                    <form onSubmit={this.handleSubmit}>
-                        <label>
-                            Enter Name:
-                            <input type="text" value={this.state.name} onChange={this.handleChange} />
-                        </label>
-                        <input className="BeginPlayButton" type="submit" value="Begin Game" onClick={this.beginPlay.bind(null,true)}/>
-                        
 
-                    </form>     
-                </div> */}
-
-                    <button className="TestButton" onClick={this.testButton}>Test Button</button>
-                    <textarea id="nameArea" value={this.state.testData} ></textarea>
+                    {/* <button className="TestButton" onClick={this.testButton}>Test Button</button>
+                    <textarea id="nameArea" value={this.state.testData} ></textarea> */}
 
 
             </div>

@@ -18,7 +18,7 @@ class Transcript extends Component {
             <div className="Transcript">
 
                 <p>
-                    Transcript of {this.props.name}
+                {this.props.name}'s Game Transcript
                 </p>
 
 

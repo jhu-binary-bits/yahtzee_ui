@@ -17,12 +17,12 @@ const Header = () => {
                 <NavLink exact to="/aboutus" activeClassName="chosen" className="nav-buttons">
                     <li >About Us</li>
                 </NavLink>
-                <NavLink exact to="/sinlgeplayer" activeClassName="chosen" className="nav-buttons">
+                {/* <NavLink exact to="/sinlgeplayer" activeClassName="chosen" className="nav-buttons">
                     <li >Single Player</li>
                 </NavLink>
                 <NavLink exact to="/multiplayer" activeClassName="chosen" className="nav-buttons">
                     <li >Multi Player</li>
-                </NavLink>
+                </NavLink> */}
             </ul>
         </nav>
     )

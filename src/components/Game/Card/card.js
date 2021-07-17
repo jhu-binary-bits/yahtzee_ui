@@ -16,7 +16,7 @@ class Card extends Component {
         return(
             <div className="Card">
                 <p>
-                    Card of {this.props.name}
+                    {this.props.name}'s Score Card
                 </p>
 
 

@@ -1,7 +1,9 @@
 .Game {
     /* display: flex; */
     /* padding: 20px; */
-    width: 100%
+    width: 100%;
+    margin-bottom: 15%;
+
 }
 
 .Game h1 {
@@ -12,6 +14,6 @@
 }
 
 #gameTitle {
-    padding-bottom: 10%;
+    padding-bottom: 5%;
 
 }

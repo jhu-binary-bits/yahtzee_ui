@@ -15,6 +15,9 @@ class Card extends Component {
 
         return(
             <div className="Card">
+                <p>
+                    Card of {this.props.name}
+                </p>
 
 
 

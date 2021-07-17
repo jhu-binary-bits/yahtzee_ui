@@ -8,12 +8,17 @@ import Chat from './Chat/chat';
 import Dice from './Dice/dice';
 import Transcript from './Transcript/transcript';
 
+/**
+ * Component that holds the entirety of the game. It is the sheet that holds other components that require to play the game.
+ * This component will hold the Dice, Transcript, Player Card, Chat.
+ */
+
 class Game extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-
+            name: props.name,
         }
     }
 
@@ -23,13 +28,30 @@ class Game extends Component {
         return(
 
             <div className="Game">
+                <div id="gameTitle">
+                    <h1>Yahtzee++</h1>
+                </div>
 
-                <h1>Game Component</h1>
 
-                <Dice></Dice>
-                <Transcript></Transcript>
-                <Card></Card>
-                <Chat></Chat>
+                <div className="GameSpace">
+                    <Chat
+                        name={this.props.name}>
+
+                        </Chat>
+
+                    <Dice></Dice>
+
+
+                    <Transcript
+                        name={this.props.name}
+                    ></Transcript>
+                    <Card
+                        name={this.props.name}
+                        ></Card>
+
+                </div>
+                
+                
 
 
 

@@ -1,0 +1,18 @@
+.Chat {
+    border: 5px solid rgb(151, 224, 151);
+    height: 600px;
+    width: 20%;
+    float: left;
+    margin-left: auto;
+}
+
+.ChatSpace{
+    border: 5px solid rgb(180, 182, 180);
+    height: 500px;
+    width: 95%;
+
+}
+
+.ChatTitle {
+    font-weight: bold;
+}

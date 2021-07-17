@@ -1,0 +1,17 @@
+.Game {
+    /* display: flex; */
+    /* padding: 20px; */
+    width: 100%
+}
+
+.Game h1 {
+}
+
+.GameSpace {
+    display: flex
+}
+
+#gameTitle {
+    padding-bottom: 10%;
+
+}

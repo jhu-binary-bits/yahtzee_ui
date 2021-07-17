@@ -6,7 +6,6 @@ class Chat extends Component {
     constructor(props){
         super(props)
         this.state = {
-
         }
     }
 
@@ -15,6 +14,16 @@ class Chat extends Component {
 
         return(
             <div className="Chat">
+
+                <div className="ChatTitle">
+                    {this.props.name}'s Chat History
+                </div>
+
+                <div className="ChatSpace">
+                    Chat Space
+                </div>
+
+
 
 
 

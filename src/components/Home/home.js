@@ -14,6 +14,7 @@ class Home extends Component {
             testData: "Start Test",
             name: "",
             playOn: false,
+            playButton: "Begin Game"
 
         }
         this.testButton = this.testButton.bind(this)
@@ -30,8 +31,13 @@ class Home extends Component {
     }
 
     beginPlay(bool) {
+        if(this.state.playOn === false){
+            let homeDiv = document.getElementById("nameLabel");
+            homeDiv.remove();
+        }
         this.setState ({
-            playOn: bool
+            playOn: bool,
+            playButton: "New Game"
         })
         console.log("Clicked begin play");
         
@@ -52,13 +58,25 @@ class Home extends Component {
       }
 
     render() {
+
         return(
             <div className="Home">
 
-            Click the buttons to toggle the message <br/>
-            <button onClick={this.beginPlay.bind(null, true)}>Begin Game</button>
-            { this.state.playOn ? <Game></Game> : <Welcome></Welcome>}
-            
+            {/* Click the buttons to toggle the message <br/> */}
+            {/* <button onClick={this.beginPlay.bind(null, true)}>Begin Game</button> */}
+
+            <div id="beginPlay">
+                <div id="gameComponent" onSubmit={this.handleSubmit}>
+                    <label id="nameLabel">
+                        Enter Name:
+                        <input type="text" value={this.state.name} onChange={this.handleChange} />
+                    </label>
+                    <input className="BeginPlayButton" type="submit" value={this.state.playButton} onClick={this.beginPlay.bind(null, true)}/>
+                    {this.state.playOn ? <Game name={this.state.name}></Game> : <Welcome playOn={this.state.playOn}></Welcome>}
+
+                </div> 
+            </div>
+
             
 
                 {/* <h2>Welcome</h2>

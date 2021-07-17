@@ -1,6 +1,9 @@
 
 import './profile.css';
 
+/*
+Creates a functional component for each member of the team. This is fed to the AboutUs component
+ */
 const Profile = (props) => {
 
     return(

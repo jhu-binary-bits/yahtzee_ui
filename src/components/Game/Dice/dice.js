@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
-
-
+import './dice.css';
 
 class Dice extends Component {
 
@@ -14,7 +12,8 @@ class Dice extends Component {
     render() {
         return(
 
-            <div className="Dice">
+            <div className="Dice" >
+                <h2>Dice Area</h2>
 
             </div>
 

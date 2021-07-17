@@ -8,7 +8,7 @@ class Welcome extends Component {
         this.state = {
             testData: "Start Test",
             name: "",
-            playOn: false,
+            playOn: props.playOn,
 
         }
         this.testButton = this.testButton.bind(this)
@@ -24,6 +24,9 @@ class Welcome extends Component {
     }
 
     beginPlay(bool) {
+        this.setState({
+            playOn: bool
+        })
         console.log("Clicked begin play");
         
         
@@ -54,7 +57,7 @@ class Welcome extends Component {
                     playing Yahtzee++.
                 </div>
 
-                <div id="beginPlay">
+                {/* <div id="beginPlay">
                     <form onSubmit={this.handleSubmit}>
                         <label>
                             Enter Name:
@@ -64,8 +67,7 @@ class Welcome extends Component {
                         
 
                     </form>     
-                </div>
-
+                </div> */}
 
                     <button className="TestButton" onClick={this.testButton}>Test Button</button>
                     <textarea id="nameArea" value={this.state.testData} ></textarea>

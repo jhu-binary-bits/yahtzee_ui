@@ -2,18 +2,18 @@
     /* display: flex; */
     /* padding: 20px; */
     width: 100%;
-    margin-bottom: 15%;
-
+    margin-bottom: 0%;
 }
 
 .Game h1 {
 }
 
 .GameSpace {
-    display: flex
+    display: flex;
+    padding-bottom: 10%;
 }
 
 #gameTitle {
-    padding-bottom: 5%;
+    padding-bottom: 10px;
 
 }

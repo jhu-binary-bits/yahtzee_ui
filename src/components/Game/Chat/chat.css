@@ -7,24 +7,30 @@
 
 }
 
-.ChatSpace{
-    border: 5px solid rgb(180, 182, 180);
-    height: 450px;
-    width: 95%;
-
-}
-
 .ChatTitle {
     font-weight: bold;
 }
 
-.ChatTyping {
-    border: 3px solid rgb(101, 129, 101)
+.ChatSpace{
+    /* border: 5px solid rgb(180, 182, 180); */
+    height: 450px;
+    width: 100%;
 }
 
-#input {
-    /* min-height:100px;
-    text-align: left;
-    padding: 0.4em 0.4em 0.4em 0; */
 
+.ChatTyping {
+    /* border: 3px solid rgb(101, 129, 101); */
+    height: 130px;
+}
+
+#chatSpace {
+    resize: none;
+    width: 95%;
+    height: 98%;
+}
+
+#chatTyping {
+    resize: none;
+    width: 95%;
+    height: 98%;
 }

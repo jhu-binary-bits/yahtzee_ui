@@ -31,17 +31,13 @@ class Home extends Component {
     }
 
     beginPlay(bool) {
-        if(this.state.playOn === false){
-            let homeDiv = document.getElementById("nameLabel");
-            homeDiv.remove();
+        if(this.state.name != "") {
+            this.setState ({
+                playOn: bool,
+                playButton: "New Game"
+            })
         }
-        this.setState ({
-            playOn: bool,
-            playButton: "New Game"
-        })
         console.log("Clicked begin play");
-        
-        
     }
 
     handleChange(event) {
@@ -61,25 +57,22 @@ class Home extends Component {
 
         return(
             <div className="Home">
+                <div id="beginPlay">
+                    {this.state.playOn ? <Game name={this.state.name}></Game> : <Welcome playOn={this.state.playOn}></Welcome> }
 
-            <div id="beginPlay">
-                <div id="gameComponent" onSubmit={this.handleSubmit}>
-                    <label id="nameLabel">
-                        Enter Name:
-                        <input type="text" value={this.state.name} onChange={this.handleChange} />
-                    </label>
-                    <input className="BeginPlayButton" type="submit" value={this.state.playButton} onClick={this.beginPlay.bind(null, true)}/>
-                    {this.state.playOn ? <Game name={this.state.name}></Game> : <Welcome playOn={this.state.playOn}></Welcome>}
-
-                </div> 
+                    {this.state.playOn ? null: 
+                    <div id="gameComponent" onSubmit={this.handleSubmit}>
+                        <label id="nameLabel">
+                            Enter Name:
+                            <input type="text" value={this.state.name} onChange={this.handleChange} />
+                        </label>
+                        <input className="BeginPlayButton" type="submit" value={this.state.playButton} onClick={this.beginPlay.bind(null, true)}/>
+                    </div>
+                    }
+                    
+                </div>
             </div>
-
-            </div>
-
-
-
         )
-
     }
 }
 

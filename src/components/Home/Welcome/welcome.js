@@ -55,6 +55,9 @@ class Welcome extends Component {
                     This is the Yahtzee++ project. This was created for the Software Engineering course
                     at Johns Hopkins University. Please enter your name and press "Begin Play" to start 
                     playing Yahtzee++.
+                    <br></br>
+                    <br></br>
+                    Enter your name to begin to play. Text field cannot be empty.
                 </div>
 
 

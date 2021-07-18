@@ -25,8 +25,7 @@ class Chat extends Component {
           this.setState({
                 messageSubmitted: this.state.message,
                 message: "",
-        });
-          
+        });   
       }
 
 
@@ -36,17 +35,15 @@ class Chat extends Component {
             <div className="Chat">
 
                 <div className="ChatTitle">
-                    {this.props.name}'s Chat History
+                    Chat History
                 </div>
 
                 <div className="ChatSpace">
-                    Chat History Space
-                    <textarea cols="21" rows="28" type="text" value={this.state.messageSubmitted} ></textarea>
+                    <textarea id="chatSpace" type="text" value={this.state.messageSubmitted}></textarea>
                 </div>
 
                 <div className="ChatTyping">
-                    <textarea  cols="21" rows="7" id="input" type="text" value={this.state.message} onChange={this.handleChange}>
-                    </textarea>
+                    <textarea  id="chatTyping"  type="text" value={this.state.message} onChange={this.handleChange}></textarea>
                 </div>
 
                 <div className="SubmitChat" >

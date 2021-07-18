@@ -1,5 +1,7 @@
 .Home {
-    
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
@@ -10,7 +12,9 @@
 }
 
 #gameComponent {
-    display: inline;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
 }
 
 .BeginPlayButton {
@@ -20,7 +24,7 @@
 }
 
 #beginPlay {
-    margin-top: 2%;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
     width: 100%;

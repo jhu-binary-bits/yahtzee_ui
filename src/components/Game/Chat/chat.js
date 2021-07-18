@@ -8,13 +8,15 @@ class Chat extends Component {
         this.state = {
             message: "",
             messageSubmitted: "",
+            // chatHistoryList: this.props.chatHistory.map((message) => <li>{message}</li>)
         }
         this.handleChange = this.handleChange.bind(this);
         this.submitChat = this.submitChat.bind(this);
+        
     }
 
     handleChange(event) {
-        console.log("The input text in chat: " + this.state.message);
+        // console.log("The input text in chat: " + this.state.message);
         this.setState({
             message: event.target.value
         });
@@ -22,10 +24,23 @@ class Chat extends Component {
 
       submitChat(event){
           console.log("The submit chat button was clicked");
+          let messageEvent = {
+            "timestamp": Date.now(),
+            "type": "chat_message",
+            "data": {
+                "player_name": this.props.name,
+                "content": this.state.message
+            }
+          }
+          window.client.send(JSON.stringify(messageEvent))
           this.setState({
                 messageSubmitted: this.state.message,
                 message: "",
+<<<<<<< HEAD
         });   
+=======
+          });
+>>>>>>> 7a8b88e (Add websockets client)
       }
 
 
@@ -39,7 +54,11 @@ class Chat extends Component {
                 </div>
 
                 <div className="ChatSpace">
+<<<<<<< HEAD
                     <textarea id="chatSpace" type="text" value={this.state.messageSubmitted}></textarea>
+=======
+                    <textarea cols="21" rows="28" type="text" value={this.state.chatHistory} ></textarea>
+>>>>>>> 7a8b88e (Add websockets client)
                 </div>
 
                 <div className="ChatTyping">

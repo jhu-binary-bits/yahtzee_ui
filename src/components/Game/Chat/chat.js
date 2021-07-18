@@ -7,8 +7,6 @@ class Chat extends Component {
         super(props)
         this.state = {
             message: "",
-            messageSubmitted: "",
-            // chatHistoryList: this.props.chatHistory.map((message) => <li>{message}</li>)
         }
         this.handleChange = this.handleChange.bind(this);
         this.submitChat = this.submitChat.bind(this);
@@ -34,13 +32,8 @@ class Chat extends Component {
           }
           window.client.send(JSON.stringify(messageEvent))
           this.setState({
-                messageSubmitted: this.state.message,
                 message: "",
-<<<<<<< HEAD
-        });   
-=======
-          });
->>>>>>> 7a8b88e (Add websockets client)
+          });   
       }
 
 
@@ -54,11 +47,7 @@ class Chat extends Component {
                 </div>
 
                 <div className="ChatSpace">
-<<<<<<< HEAD
-                    <textarea id="chatSpace" type="text" value={this.state.messageSubmitted}></textarea>
-=======
-                    <textarea cols="21" rows="28" type="text" value={this.state.chatHistory} ></textarea>
->>>>>>> 7a8b88e (Add websockets client)
+                    <textarea id="chatSpace" type="text" value={this.props.gameState.data.chat_transcript}></textarea>
                 </div>
 
                 <div className="ChatTyping">

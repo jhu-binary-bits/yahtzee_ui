@@ -17,15 +17,11 @@ class Home extends Component {
             testData: "Start Test",
             name: "",
             playOn: false,
-            playButton: "Begin Game",
-            players: [],
-            chatHistoryList: [],
-            chatHistory: ""
+            playButton: "Join Game",
+            gameState: {}
         }
         this.handleChange = this.handleChange.bind(this);
         this.beginPlay = this.beginPlay.bind(this);
-<<<<<<< HEAD
-=======
         
     }
 
@@ -39,33 +35,20 @@ class Home extends Component {
         console.log("Received event:")
         console.log(event)
         
-        // Write chat history to a string
-        let tmp = ""
-        event.data.chat_history.map((msg) =>
-            tmp += "\n" + msg
-        )
-        console.log(tmp)
         if (event.type === "game_state_update") {
+            console.log("received game state update")
             this.setState({
-                players: event.data.players,
-                chatHistoryList: event.data.chat_history,
-                chatHistory: tmp
+                gameState: event
             })
         }
         else {
             console.log("Event type not recognized")
         }
+        console.log("current state")
+        console.log(this.state)
       };
     }
-
-    testButton() {
-        console.log("Clicking button")
-        this.setState({
-            testData: "Hello Team, Testing button to state state"
-        })
->>>>>>> 7a8b88e (Add websockets client)
-    }
-
+    
     beginPlay(bool) {
         if(this.state.name != "") {
             this.setState ({
@@ -73,25 +56,20 @@ class Home extends Component {
                 playButton: "New Game"
             })
         }
-<<<<<<< HEAD
         console.log("Clicked begin play");
-=======
         this.setState ({
             playOn: bool,
             playButton: "New Game"
         })
-        // Set the player name to a global variable
-        window.player_name = this.state.name
         console.log("Clicked begin play");
         let playerJoinEvent = {
             "timestamp": Date.now(),
             "type": "player_joined",
             "data": {
-                "player_name": window.player_name
+                "player_name": this.state.name
             }
         }
         window.client.send(JSON.stringify(playerJoinEvent))
->>>>>>> 7a8b88e (Add websockets client)
     }
 
     handleChange(event) {
@@ -111,7 +89,7 @@ class Home extends Component {
         return(
             <div className="Home">
                 <div id="beginPlay">
-                    {this.state.playOn ? <Game name={this.state.name}></Game> : <Welcome playOn={this.state.playOn}></Welcome> }
+                    {this.state.playOn ? <Game gameState={this.state.gameState} name={this.state.name}></Game> : <Welcome playOn={this.state.playOn}></Welcome> }
                     {this.state.playOn ? null: 
                     <div id="gameComponent" onSubmit={this.handleSubmit}>
                         <label id="nameLabel">

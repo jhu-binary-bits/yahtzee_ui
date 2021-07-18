@@ -1,8 +1,41 @@
 .Home {
-    background-color: #d7f7d6;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
 .Home p {
+
     
+    
+}
+
+#gameComponent {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+.BeginPlayButton {
+    margin-bottom: 5%;
+    
+    
+}
+
+#beginPlay {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+#nameArea {
+
+}
+
+#IntroParagraph {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
 }

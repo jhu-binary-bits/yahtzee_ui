@@ -1,11 +1,12 @@
 .App {
   /* text-align: center; */
-  position: relative;
+  /* position: relative; */
 }
 
 .body {
   position: relative;
   margin-top: 10%;
+  height: 100%;
 
 }
 
@@ -16,8 +17,13 @@
   width: 100%;
 }
 
+h1 {
+  text-align: center;
+  font-size: 50px;
+}
+
 h2 {
-  font-size: 40px;
+  font-size: 35px;
   font-family: 'Muli', sans-serif;
   text-align: center;
 }
@@ -37,34 +43,7 @@ p{
   font-family: 'Muli', sans-serif;
   font-size: 16px;
   font-style: normal;
-  padding: 0px 20%;
   display: inline-block;
 }
 
-/* .App-header {
-  background-color: #d7f7d6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
 
-/* .App-body {
-  background-color: #006611;
-} */
-
-/* .App-link {
-  color: #61dafb;
-} */
-
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */

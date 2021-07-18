@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Footer from './components/Footer/footer';
 import Header from './components/Header/header';
@@ -19,8 +18,8 @@ function App() {
               <Route path="/" exact component={Home}/>
               <Route path="/rules" exact component={Rules} />
               <Route path="/aboutus" exact component={AboutUs} />
-              <Route path="/singleplayer" exact component={Player} />
-              <Route path="/multiplayer" exact component={MultiPlayer} />
+              {/* <Route path="/singleplayer" exact component={Player} />
+              <Route path="/multiplayer" exact component={MultiPlayer} /> */}
             </Switch>
           </Router>
         </div>

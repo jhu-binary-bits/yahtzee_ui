@@ -1,0 +1,36 @@
+.Chat {
+    border: 5px solid rgb(151, 224, 151);
+    height: 600px;
+    width: 20%;
+    float: left;
+    margin-left: auto;
+
+}
+
+.ChatTitle {
+    font-weight: bold;
+}
+
+.ChatSpace{
+    /* border: 5px solid rgb(180, 182, 180); */
+    height: 450px;
+    width: 100%;
+}
+
+
+.ChatTyping {
+    /* border: 3px solid rgb(101, 129, 101); */
+    height: 130px;
+}
+
+#chatSpace {
+    resize: none;
+    width: 95%;
+    height: 98%;
+}
+
+#chatTyping {
+    resize: none;
+    width: 95%;
+    height: 98%;
+}

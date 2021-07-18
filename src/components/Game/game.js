@@ -22,16 +22,13 @@ class Game extends Component {
         }
     }
 
-
     render() {
 
         return(
-
             <div className="Game">
                 <div id="gameTitle">
                     <h1>Yahtzee++</h1>
                 </div>
-
 
                 <div className="GameSpace">
                     <Chat
@@ -49,11 +46,7 @@ class Game extends Component {
                         ></Card>
 
                 </div>
-                
-
             </div>
-
-
         )
     }
 }

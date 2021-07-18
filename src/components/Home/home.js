@@ -17,17 +17,8 @@ class Home extends Component {
             playButton: "Begin Game"
 
         }
-        this.testButton = this.testButton.bind(this)
         this.handleChange = this.handleChange.bind(this);
         this.beginPlay = this.beginPlay.bind(this);
-        
-    }
-
-    testButton() {
-        console.log("Clicking button")
-        this.setState({
-            testData: "Hello Team, Testing button to state state"
-        })
     }
 
     beginPlay(bool) {
@@ -48,7 +39,6 @@ class Home extends Component {
       }
     
       handleSubmit(event) {
-        // alert('A name was submitted: ' + this.state.name);
         console.log("A name was submitted " + this.state.name);
         event.preventDefault();
       }
@@ -59,7 +49,6 @@ class Home extends Component {
             <div className="Home">
                 <div id="beginPlay">
                     {this.state.playOn ? <Game name={this.state.name}></Game> : <Welcome playOn={this.state.playOn}></Welcome> }
-
                     {this.state.playOn ? null: 
                     <div id="gameComponent" onSubmit={this.handleSubmit}>
                         <label id="nameLabel">

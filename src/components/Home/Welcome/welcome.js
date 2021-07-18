@@ -9,42 +9,8 @@ class Welcome extends Component {
             testData: "Start Test",
             name: "",
             playOn: props.playOn,
-
         }
-        // this.testButton = this.testButton.bind(this)
-        // this.handleChange = this.handleChange.bind(this);
-        // this.beginPlay = this.beginPlay.bind(this);
     }
-
-    // testButton() {
-    //     console.log("Clicking button")
-    //     this.setState({
-    //         testData: "Hello Team, Testing button to state state"
-    //     })
-    // }
-
-    // beginPlay(bool) {
-    //     this.setState({
-    //         playOn: bool
-    //     })
-    //     console.log("Clicked begin play");
-        
-        
-    // }
-
-    // handleChange(event) {
-    //     console.log("The name value is " + this.state.name);
-    //     this.setState({
-    //         name: event.target.value
-    //     });
-    //   }
-    
-    //   handleSubmit(event) {
-    //     // alert('A name was submitted: ' + this.state.name);
-    //     console.log("A name was submitted " + this.state.name);
-    //     event.preventDefault();
-    //   }
-
 
     render(){
 
@@ -59,12 +25,6 @@ class Welcome extends Component {
                     <br></br>
                     Enter your name to begin to play. Text field cannot be empty.
                 </div>
-
-
-                    {/* <button className="TestButton" onClick={this.testButton}>Test Button</button>
-                    <textarea id="nameArea" value={this.state.testData} ></textarea> */}
-
-
             </div>
         )
     }

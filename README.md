@@ -7,6 +7,12 @@
 
 2) Run `npm install` from the root directory to install all dependencies
 
+## Pulling in a remote branch
+A remote branch is a branch that has been pushed to Github by someone else, but is not yet merged to master.
+
+* In your terminal window, navigate to `yahtzee_ui`
+* Type `git switch {branch_name}`, replacing {branch_name} with the name of the remote branch that you want to switch to
+
 ## Running the app
 
 0) If any dependencies have been added since the last time you ran `npm install`, you might need to run the command again.
@@ -14,6 +20,15 @@
 1) Run `npm start` to run the app locally on port 3000.
 
 2) Navigate to [http://localhost:3000](http://localhost:3000) to use the app.
+
+* To see logs:
+    * Right click anywhere on the webpage
+    * Click "Inspect" in the cursor menu
+    * In the sidebar that opens up, select the Console tab on the top
+    * Vue logs and warnings will be highlighted in red and yellow
+    * Any logs written with `console.log("my log")` in the code will be printed with a white background
+
+
 
 ------------------------------------------------
 ------------------------------------------------

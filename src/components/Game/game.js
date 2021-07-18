@@ -17,9 +17,6 @@ class Game extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            name: props.name,
-        }
     }
 
     render() {
@@ -28,22 +25,29 @@ class Game extends Component {
             <div className="Game">
                 <div id="gameTitle">
                     <h1>Yahtzee++</h1>
+                    <h3>({this.props.name}'s view)</h3>
                 </div>
 
                 <div className="GameSpace">
                     <Chat
-                        name={this.props.name}>
-                        </Chat>
+                        name={this.props.name}
+                        gameState={this.props.gameState}>
+                    </Chat>
 
-                    <Dice></Dice>
+                    <Dice
+                        name={this.props.name}
+                        gameState={this.props.gameState}>
+                    </Dice>
 
                     <Transcript
                         name={this.props.name}
+                        gameState={this.props.gameState}
                     ></Transcript>
                     
                     <Card
                         name={this.props.name}
-                        ></Card>
+                        gameState={this.props.gameState}>
+                    </Card>
 
                 </div>
             </div>

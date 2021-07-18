@@ -7,14 +7,14 @@ class Chat extends Component {
         super(props)
         this.state = {
             message: "",
-            messageSubmitted: "",
         }
         this.handleChange = this.handleChange.bind(this);
         this.submitChat = this.submitChat.bind(this);
+        
     }
 
     handleChange(event) {
-        console.log("The input text in chat: " + this.state.message);
+        // console.log("The input text in chat: " + this.state.message);
         this.setState({
             message: event.target.value
         });
@@ -22,10 +22,18 @@ class Chat extends Component {
 
       submitChat(event){
           console.log("The submit chat button was clicked");
+          let messageEvent = {
+            "timestamp": Date.now(),
+            "type": "chat_message",
+            "data": {
+                "player_name": this.props.name,
+                "content": this.state.message
+            }
+          }
+          window.client.send(JSON.stringify(messageEvent))
           this.setState({
-                messageSubmitted: this.state.message,
                 message: "",
-        });   
+          });   
       }
 
 
@@ -39,7 +47,7 @@ class Chat extends Component {
                 </div>
 
                 <div className="ChatSpace">
-                    <textarea id="chatSpace" type="text" value={this.state.messageSubmitted}></textarea>
+                    <textarea id="chatSpace" type="text" value={this.props.gameState.data.chat_transcript}></textarea>
                 </div>
 
                 <div className="ChatTyping">

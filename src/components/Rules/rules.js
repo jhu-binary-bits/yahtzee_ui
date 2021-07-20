@@ -60,34 +60,34 @@ const Rules = () => {
                             The score card is divided into an Upper Section and a Lower Section. Scoring combinations for each
                             section or explained below.
                             <br></br><br></br>
-                            <table>
-                                <tr>
-                                    <th>Upper Section</th>
-                                    <th>What to Score</th>
+                            <table className="Tables">
+                                <tr className="TableRow">
+                                    <th className="TableHeader">Upper Section</th>
+                                    <th className="TableHeader">What to Score</th>
                                 </tr>
-                                <tr>
-                                    <td>Aces(Ones)</td>
-                                    <td>Total of Aces only</td>
+                                <tr className="TableRow">
+                                    <td className="TableData">Aces(Ones)</td>
+                                    <td className="TableData">Total of Aces only</td>
                                 </tr>
-                                <tr>
-                                    <td>Twos</td>
-                                    <td>Total of Twos only</td>
+                                <tr className="TableRow">
+                                    <td className="TableData">Twos</td>
+                                    <td className="TableData">Total of Twos only</td>
                                 </tr>
-                                <tr>
-                                    <td>Threes</td>
-                                    <td>Total of Threes only</td>
+                                <tr className="TableRow">
+                                    <td className="TableData">Threes</td>
+                                    <td className="TableData">Total of Threes only</td>
                                 </tr>
-                                <tr>
-                                    <td>Fours</td>
-                                    <td>Total of Fours only</td>
+                                <tr className="TableRow">
+                                    <td className="TableData">Fours</td>
+                                    <td className="TableData">Total of Fours only</td>
                                 </tr>
-                                <tr>
-                                    <td>Fives</td>  
-                                    <td>Total of Fives only</td>  
+                                <tr className="TableRow">
+                                    <td className="TableData">Fives</td>  
+                                    <td className="TableData">Total of Fives only</td>  
                                 </tr>
-                                <tr>
-                                    <td>Sixes</td>
-                                    <td>Total of Sixes only</td>
+                                <tr className="TableRow">
+                                    <td className="TableData">Sixes</td>
+                                    <td className="TableData">Total of Sixes only</td>
                                 </tr>
                             </table>
                             <br></br>
@@ -101,38 +101,38 @@ const Rules = () => {
                             <br></br><br></br>
                             Each of the Lower Section scoring combinations is explained in the detail in the next column.
                             <br></br><br></br>
-                            <table>
-                                <tr>
-                                    <th>Lower Section</th>
-                                    <th>What to Score</th>
+                            <table className="Tables">
+                                <tr className="TableRow">
+                                    <th className="TableHeader">Lower Section</th>
+                                    <th className="TableHeader">What to Score</th>
                                 </tr>
-                                <tr>
-                                    <td>3 of a Kind</td>
-                                    <td>Total of all 5 dice</td>
+                                <tr className="TableRow">
+                                    <td className="TableData">3 of a Kind</td>
+                                    <td className="TableData">Total of all 5 dice</td>
                                 </tr>
-                                <tr>
-                                    <td>4 of a Kind</td>
-                                    <td>Total of all 5 dice</td>
+                                <tr className="TableRow">
+                                    <td className="TableData">4 of a Kind</td>
+                                    <td className="TableData">Total of all 5 dice</td>
                                 </tr>
-                                <tr>
-                                    <td>Full House</td>
-                                    <td>25 points</td>
+                                <tr className="TableRow">
+                                    <td className="TableData">Full House</td>
+                                    <td className="TableData">25 points</td>
                                 </tr>
-                                <tr>
-                                    <td>Small Straight</td>
-                                    <td>30 points</td>
+                                <tr className="TableRow">
+                                    <td className="TableData">Small Straight</td>
+                                    <td className="TableData">30 points</td>
                                 </tr>
-                                <tr>
-                                    <td>Large Straight</td>
-                                    <td>40 points</td>
+                                <tr className="TableRow">
+                                    <td className="TableData">Large Straight</td>
+                                    <td className="TableData">40 points</td>
                                 </tr>
-                                <tr>
-                                    <td>Yahtzee (5 of a Kind)</td>
-                                    <td>50 points</td>
+                                <tr className="TableRow">
+                                    <td className="TableData">Yahtzee (5 of a Kind)</td>
+                                    <td className="TableData">50 points</td>
                                 </tr>
-                                <tr>
-                                    <td>Chance</td>
-                                    <td>Total of all 5 dice</td>
+                                <tr className="TableRow">
+                                    <td className="TableData">Chance</td>
+                                    <td className="TableData">Total of all 5 dice</td>
                                 </tr>
                             </table>
                             <br></br><br></br>

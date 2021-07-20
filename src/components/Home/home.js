@@ -50,7 +50,7 @@ class Home extends Component {
     }
     
     beginPlay(bool) {
-        if(this.state.name != "") {
+        if(this.state.name !== "") {
             this.setState ({
                 playOn: bool,
                 playButton: "New Game"

@@ -22,9 +22,13 @@
 }
 
 .Rules h2 {
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
 
 .Rules p {
     

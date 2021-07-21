@@ -9,13 +9,21 @@ const Profile = (props) => {
     return(
 
         <div className="Profile">
-
-            <div>
-                <h3>{props.name}</h3>
-            </div>
-            <img src={props.image} alt={props.name} className="ProfileImage"></img>
-            <p id="bio">{props.bio}</p>
-
+            <table>
+                <tr>
+                    <th colSpan="2">
+                        {props.name}
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <img src={props.image} alt={props.name} className="ProfileImage"></img>
+                    </td>
+                    <td>
+                        <p id="bio">{props.bio}</p>
+                    </td>
+                </tr>
+            </table>
         </div>
 
     )

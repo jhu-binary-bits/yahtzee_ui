@@ -22,6 +22,7 @@ const AboutUs = () => {
                     </p>
                 </div>
 
+            
                 <Profile
                 name="Peter Belanger"
                 image={Peter}
@@ -33,7 +34,7 @@ const AboutUs = () => {
                 with AWS and GitHub, a little experience testing code, packaging code, managing deployments with Make and Jenkins, 
                 and a little experience managing containers with Docker."
                 ></Profile>
-
+                
                 <Profile
                 name="Read Brown"
                 image={Read}
@@ -42,7 +43,7 @@ const AboutUs = () => {
                 scripts to automate report generation. I have worked in C/C++, Python, and Java and have some experience with 
                 Matlab and OpenMP/MPI."
                 ></Profile>
-
+                
                 <Profile
                 name="Christopher De La Garza"
                 image={Christopher}
@@ -52,7 +53,7 @@ const AboutUs = () => {
                 The technology stack I have some experience in is IOS, Swift, Android, Java, JavaScript, Azure, AWS. I have a 
                 bachelor's degree in computer engineering from the University of Washington."
                 ></Profile>
-
+               
                 <Profile 
                 name="Katie Kish"
                 image={Katie}
@@ -67,9 +68,7 @@ const AboutUs = () => {
                 field of cybersecurity and recently helped a former professor edit his newly published book, Cybersecurity 
                 Readiness: A Holistic and High-Performance Approach."
                 ></Profile>
-
                 
-
                 <Profile
                 name="Chris Symons"
                 image={Chris}
@@ -82,10 +81,7 @@ const AboutUs = () => {
                 C#; I am comfortable with JavaScript, but have not done any web development recently.  Finally, I received a 
                 bachelor’s degree in Computer Science from the Rochester Institute of Technology."
                 ></Profile>
-
-                
-
-                
+                 
         </div>
 
 

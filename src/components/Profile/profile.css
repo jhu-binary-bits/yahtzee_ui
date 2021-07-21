@@ -9,10 +9,11 @@
     float: left;
     height: 150px;
     width: 150px;
-    /* max-width: 100%; */
-    /* max-height: 100%; */
-    /* background-color: transparent; */
-    /* border-radius: 10px; */
+    background-color: transparent;
+    border-radius: 10px;
     box-shadow: 2px 2px 10px rgb(180, 180, 180);
 }
 
+.Profile th tr {
+    text-align: center;
+}

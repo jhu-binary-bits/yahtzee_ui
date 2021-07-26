@@ -77,7 +77,35 @@ class Dice extends Component {
       this.setState({newState,})
     }
 
+
+
     render() {
+        var count = 0;
+        var dicevals = this.props.gameState.data.dice_vals;
+        for (let selection in this.state.dicegroup) {
+          switch(dicevals[count]){
+              case 1:
+                this.state.dicegroup[selection].image = roll1;
+                break;
+              case 2:
+                this.state.dicegroup[selection].image = roll2;
+                break;
+              case 3:
+                this.state.dicegroup[selection].image = roll3;
+                break;
+              case 4:
+                this.state.dicegroup[selection].image = roll4;
+                break;
+              case 5:
+                this.state.dicegroup[selection].image = roll5;
+                break;
+              case 6:
+                this.state.dicegroup[selection].image = roll6;
+                break;
+          }
+          count = count + 1;
+        }
+
         return(
 
             <div className="Dice" >

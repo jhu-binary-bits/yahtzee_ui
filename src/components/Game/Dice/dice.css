@@ -6,13 +6,19 @@
     margin-right: auto;
 }
 
+.RollDice{
+  text-align: center;
+}
+
 .noBorder {
+    text-align: center;
     color: #000;
     border: solid 2px transparent;
     padding: 5px 5px 5px 5px;
     margin: 5px 0px 5px 0;
 }
 .withBorder {
+    text-align: center;
     color: #000;
     border: solid 2px #5afc03;
     padding: 5px 5px 5px 5px;

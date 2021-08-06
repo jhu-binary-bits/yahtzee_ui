@@ -1,7 +1,7 @@
 .Chat {
     border: 5px solid rgb(151, 224, 151);
-    height: 600px;
-    width: 20%;
+    height: 61%;
+    width: 300px;
     float: left;
     margin-left: auto;
 
@@ -13,20 +13,19 @@
 
 .ChatSpace{
     /* border: 5px solid rgb(180, 182, 180); */
-    height: 450px;
+    height: 70%;
     width: 100%;
 }
 
-
 .ChatTyping {
     /* border: 3px solid rgb(101, 129, 101); */
-    height: 130px;
+    height: 20%;
 }
 
 #chatSpace {
     resize: none;
     width: 95%;
-    height: 98%;
+    height: 95%;
 }
 
 #chatTyping {

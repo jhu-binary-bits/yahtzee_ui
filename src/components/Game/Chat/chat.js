@@ -33,7 +33,7 @@ class Chat extends Component {
           window.client.send(JSON.stringify(messageEvent))
           this.setState({
                 message: "",
-          });   
+          });
       }
 
 
@@ -43,7 +43,7 @@ class Chat extends Component {
             <div className="Chat">
 
                 <div className="ChatTitle">
-                    Chat History
+                    Game Chat
                 </div>
 
                 <div className="ChatSpace">

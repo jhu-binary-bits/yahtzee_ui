@@ -15,7 +15,7 @@ class Home extends Component {
         super(props);
         this.state = {
             name: "",
-            hasJoinedGame: false,
+            beginPlay: false,
             playButton: "Join Game",
             gameState: {}
         }
@@ -52,7 +52,7 @@ class Home extends Component {
         console.log("Clicked join game");
         if (this.state.name !== "") {
             this.setState ({
-                hasJoinedGame: bool
+                beginPlay: bool
             })
             let playerJoinEvent = {
                 "timestamp": Date.now(),
@@ -82,10 +82,10 @@ class Home extends Component {
         return(
             <div className="Home">
                 <div id="joinGame">
-                    {this.state.hasJoinedGame ? 
+                    {this.state.beginPlay ? 
                         (<Game gameState={this.state.gameState} name={this.state.name}></Game>) 
-                         : (<Welcome hasJoinedGame={this.state.hasJoinedGame}></Welcome>) }
-                    {this.state.hasJoinedGame ? null: 
+                         : (<Welcome beginPlay={this.state.beginPlay}></Welcome>) }
+                    {this.state.beginPlay ? null: 
                     <div id="gameComponent" onSubmit={this.handleSubmit}>
                         <label id="nameLabel">
                             Enter Name:

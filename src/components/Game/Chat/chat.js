@@ -42,22 +42,22 @@ class Chat extends Component {
         return(
             <div className="Chat">
 
-                <div className="ChatTitle">
+                <div className="ChatTitle" align="center">
                     Game Chat
                 </div>
-
+                
                 <div className="ChatSpace">
                     <textarea id="chatSpace" type="text" value={this.props.gameState.data.chat_transcript}></textarea>
                 </div>
-
+                <div>
                 <div className="ChatTyping">
                     <textarea  id="chatTyping"  type="text" value={this.state.message} onChange={this.handleChange}></textarea>
                 </div>
 
-                <div className="SubmitChat" >
-                    <input type="button" onClick={this.submitChat} value="Submit"></input>
+                <div >
+                    <input type="button" onClick={this.submitChat} value="Submit" className="SubmitChatButton"></input>
                 </div>
-
+                </div>
             </div>
         )
     }

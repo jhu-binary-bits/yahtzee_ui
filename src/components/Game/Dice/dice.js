@@ -12,7 +12,7 @@ class Dice extends Component {
         console.log("The start game button was clicked");
         let messageEvent = {
             "timestamp": Date.now(),
-            "type": "start_game",
+            "type": "game_started",
             "data": {"player_name": this.props.name}
           }
           window.client.send(JSON.stringify(messageEvent))

@@ -15,7 +15,7 @@ class Transcript extends Component {
         return(
             <div className="Transcript">
 
-                <div className="TranscriptTitle">
+                <div className="TranscriptTitle" align="center">
                     Game Transcript
                 </div>
 

@@ -14,14 +14,13 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            testData: "Start Test",
             name: "",
-            playOn: false,
+            beginPlay: false,
             playButton: "Join Game",
             gameState: {}
         }
         this.handleChange = this.handleChange.bind(this);
-        this.beginPlay = this.beginPlay.bind(this);
+        this.joinGame = this.joinGame.bind(this);
         
     }
 
@@ -49,27 +48,21 @@ class Home extends Component {
       };
     }
     
-    beginPlay(bool) {
-        if(this.state.name !== "") {
+    joinGame(bool) {
+        console.log("Clicked join game");
+        if (this.state.name !== "") {
             this.setState ({
-                playOn: bool,
-                playButton: "New Game"
+                beginPlay: bool
             })
-        }
-        console.log("Clicked begin play");
-        this.setState ({
-            playOn: bool,
-            playButton: "New Game"
-        })
-        console.log("Clicked begin play");
-        let playerJoinEvent = {
-            "timestamp": Date.now(),
-            "type": "player_joined",
-            "data": {
-                "player_name": this.state.name
+            let playerJoinEvent = {
+                "timestamp": Date.now(),
+                "type": "player_joined",
+                "data": {
+                    "player_name": this.state.name
+                }
             }
+            window.client.send(JSON.stringify(playerJoinEvent))
         }
-        window.client.send(JSON.stringify(playerJoinEvent))
     }
 
     handleChange(event) {
@@ -88,15 +81,17 @@ class Home extends Component {
 
         return(
             <div className="Home">
-                <div id="beginPlay">
-                    {this.state.playOn ? <Game gameState={this.state.gameState} name={this.state.name}></Game> : <Welcome playOn={this.state.playOn}></Welcome> }
-                    {this.state.playOn ? null: 
+                <div id="joinGame">
+                    {this.state.beginPlay ? 
+                        (<Game gameState={this.state.gameState} name={this.state.name}></Game>) 
+                         : (<Welcome beginPlay={this.state.beginPlay}></Welcome>) }
+                    {this.state.beginPlay ? null: 
                     <div id="gameComponent" onSubmit={this.handleSubmit}>
                         <label id="nameLabel">
                             Enter Name:
                             <input type="text" value={this.state.name} onChange={this.handleChange} />
                         </label>
-                        <input className="BeginPlayButton" type="submit" value={this.state.playButton} onClick={this.beginPlay.bind(null, true)}/>
+                        <input className="BeginPlayButton" type="submit" value={this.state.playButton} onClick={this.joinGame.bind(null, true)}/>
                     </div>
                     }
                     

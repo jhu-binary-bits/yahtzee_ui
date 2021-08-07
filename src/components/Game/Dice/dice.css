@@ -1,7 +1,21 @@
 .Dice {
     border: 5px solid rgb(151, 224, 151);
     height: 600px;
-    width: 80%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.StartGame {
+    margin-top: 250px;
+}
+
+.startGameButton {
+    background-color: rgb(151, 224, 151);
+    color: black;
+    font-size: 20px;
+    padding: 10px 60px;
+    border-radius: 5px;
+    margin: 10px 0px;
+    cursor: pointer;
 }

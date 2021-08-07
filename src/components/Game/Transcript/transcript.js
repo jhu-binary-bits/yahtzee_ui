@@ -6,6 +6,7 @@ class Transcript extends Component {
 
     constructor(props){
         super(props)
+        this.state = {}
     }
 
 
@@ -14,12 +15,12 @@ class Transcript extends Component {
         return(
             <div className="Transcript">
 
-                <p>
-                Game History
-                </p>
+                <div className="TranscriptTitle" align="center">
+                    Game Transcript
+                </div>
 
-                <div className="ChatSpace">
-                    <textarea id="chatSpace" type="text" value={this.props.gameState.data.game_transcript}></textarea>
+                <div className="TranscriptSpace">
+                    <textarea id="transcriptSpace" type="text" value={this.props.gameState.data.game_transcript}></textarea>
                 </div>
 
             </div>

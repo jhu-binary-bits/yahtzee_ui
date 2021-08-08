@@ -39,8 +39,7 @@ class Dice extends Component {
               image: roll1,
               selected: false,
             },
-          },
-          gamestart:false
+          }
 
         }
         this.rollDice = this.rollDice.bind(this);
@@ -98,7 +97,6 @@ class Dice extends Component {
 
     render() {
         var count = 0;
-        this.state.gamestart = this.props.gameState.data.game_started;
         if (this.props.gameState.data.game_started){
           var dicevals = this.props.gameState.data.current_turn.last_roll;
 
@@ -142,23 +140,25 @@ class Dice extends Component {
                         <input type="button" onClick={this.startGame} value="Start Game" className="startGameButton"></input>
                     </div>
                 ) : (
-                    <div></div>
+                    <div>
+                    {Object.keys(this.state.dicegroup).map(icon => (
+                      <div className={this.state.dicegroup.[icon]['selected'] ?
+                      "withBorder" : "noBorder"} >
+                          <img src={this.state.dicegroup[icon]['image']}
+                          id={this.state.dicegroup[icon]['name']}
+                          onClick={(e) => this.onIconClick(e)}
+                          width="75px"
+                          height="75px"/>
+                      </div>
+                    ))}
+
+                    <div className="RollDice" >
+                        <input type="button" onClick={this.rollDice} value="Roll Selected Dice"></input>
+                    </div>
+                    </div>
                 )}
 
-                {Object.keys(this.state.dicegroup).map(icon => (
-                  <div className={this.state.dicegroup.[icon]['selected'] ?
-                  "withBorder" : "noBorder"} >
-                      <img src={this.state.dicegroup[icon]['image']}
-                      id={this.state.dicegroup[icon]['name']}
-                      onClick={(e) => this.onIconClick(e)}
-                      width="75px"
-                      height="75px"/>
-                  </div>
-                ))}
 
-                <div className="RollDice" >
-                    <input type="button" onClick={this.rollDice} value="Roll Selected Dice"></input>
-                </div>
 
             </div>
 

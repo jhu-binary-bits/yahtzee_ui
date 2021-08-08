@@ -1,10 +1,9 @@
 .Chat {
     border: 5px solid rgb(151, 224, 151);
-    height: 600px;
-    width: 20%;
+    height: 360px;
+    width: 300px;
     float: left;
     margin-left: auto;
-
 }
 
 .ChatTitle {
@@ -13,24 +12,36 @@
 
 .ChatSpace{
     /* border: 5px solid rgb(180, 182, 180); */
-    height: 450px;
+    resize: none;
+    height: 72%;
     width: 100%;
 }
 
-
 .ChatTyping {
     /* border: 3px solid rgb(101, 129, 101); */
-    height: 130px;
+    resize: none;
+    width: 100%;
+    height: 55px;
+}
+
+.SubmitChatButton {
+    background-color: rgb(151, 224, 151);
+    color: black;
+    font-size: 15px;
+    /* padding: 2px 2px; */
+    /* border-radius: 2px; */
+    /* margin: 5px 0px; */
+    cursor: pointer;
 }
 
 #chatSpace {
     resize: none;
     width: 95%;
-    height: 98%;
+    height: 95%;
 }
 
 #chatTyping {
     resize: none;
     width: 95%;
-    height: 98%;
+    height: 45px;
 }

@@ -15,32 +15,31 @@ class Game extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {}
     }
 
     render() {
 
         return(
             <div className="Game">
-                <div id="gameTitle">
-                    <h1>Yahtzee++</h1>
-                    <h3>({this.props.name}'s view)</h3>
-                </div>
 
                 <div className="GameSpace">
-                    <Chat
-                        name={this.props.name}
-                        gameState={this.props.gameState}>
-                    </Chat>
-
+                    <div>
+                        <Transcript
+                            name={this.props.name}
+                            gameState={this.props.gameState}
+                        ></Transcript>
+                        <Chat
+                            name={this.props.name}
+                            gameState={this.props.gameState}>
+                        </Chat>
+                    </div>
                     <Dice
                         name={this.props.name}
                         gameState={this.props.gameState}>
                     </Dice>
 
-                    <Transcript
-                        name={this.props.name}
-                        gameState={this.props.gameState}
-                    ></Transcript>
+                    
                     
                     <Card
                         name={this.props.name}

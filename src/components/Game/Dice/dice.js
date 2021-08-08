@@ -67,23 +67,6 @@ class Dice extends Component {
       window.client.send(JSON.stringify(diceEvent))
     }
 
-    startGame(event){
-      this.state.gamestart = true;
-      let startGameEvent = {
-        "timestamp": Date.now(),
-        "type": "game_started",
-        "data":{
-          "player_name": this.props.name,
-        }
-      }
-      console.log("game start button clicked")
-      window.client.send(JSON.stringify(startGameEvent))
-
-    }
-
-    resetstate(event){
-      this.state.gamestart = false;
-    }
 
     onIconClick(event) {
 
@@ -100,6 +83,18 @@ class Dice extends Component {
       this.setState({newState,})
     }
 
+
+
+
+    startGame(event) {
+        console.log("The start game button was clicked");
+        let messageEvent = {
+            "timestamp": Date.now(),
+            "type": "game_started",
+            "data": {"player_name": this.props.name}
+          }
+          window.client.send(JSON.stringify(messageEvent))
+    }
 
 
     render() {
@@ -142,11 +137,14 @@ class Dice extends Component {
         return(
 
             <div className="Dice" >
-                <h2>Dice Area</h2>
-                <div>
-                  {!this.state.gamestart && <input type="button" onClick={this.startGame} value="Start Game"></input>}
-                </div>
-                <input type="button" onClick={this.resetstate()} value="reset state"></input>
+
+                {(!this.props.gameState.data.game_started) ? (
+                    <div className="StartGame" align="center">
+                        <input type="button" onClick={this.startGame} value="Start Game" className="startGameButton"></input>
+                    </div>
+                ) : (
+                    <div></div>
+                )}
 
                 {Object.keys(this.state.dicegroup).map(icon => (
                   <div className={this.state.dicegroup.[icon]['selected'] ?

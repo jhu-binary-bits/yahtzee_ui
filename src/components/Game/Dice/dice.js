@@ -45,7 +45,6 @@ class Dice extends Component {
         }
         this.rollDice = this.rollDice.bind(this);
         this.startGame = this.startGame.bind(this);
-        this.resetstate = this.resetstate.bind(this);
     }
 
     rollDice(event){

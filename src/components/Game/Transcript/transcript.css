@@ -1,8 +1,24 @@
 .Transcript {
     border: 5px solid rgb(151, 224, 151);
-    height: 600px;
-    width: 40%;
+    height: 230px;
+    width: 300px;
     /* margin-left: auto; */
     margin-right: auto;
     
+}
+
+.TranscriptTitle {
+    font-weight: bold;
+}
+
+.TranscriptSpace {
+    /* border: 5px solid rgb(180, 182, 180); */
+    height: 85%;
+    width: 100%;
+}
+
+#transcriptSpace {
+    resize: none;
+    width: 95%;
+    height: 100%;
 }

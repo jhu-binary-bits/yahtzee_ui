@@ -6,9 +6,6 @@ class Welcome extends Component {
     constructor(props){
         super(props)
         this.state = {
-            testData: "Start Test",
-            name: "",
-            playOn: props.playOn,
         }
     }
 

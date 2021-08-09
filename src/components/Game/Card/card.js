@@ -30,7 +30,13 @@ class Card extends Component {
         this.chooseFoursScore = this.chooseFoursScore.bind(this)
         this.chooseFivesScore = this.chooseFivesScore.bind(this)
         this.chooseSixesScore = this.chooseSixesScore.bind(this)
-        this.chooseThreeOfAKind = this.chooseThreeOfAKind.bind(this)
+        this.chooseThreeOfAKind = this.chooseThreeOfAKindScore.bind(this)
+        this.chooseFourOfAKind = this.chooseFourOfAKindScore.bind(this)
+        this.chooseFullHouse = this.chooseFullHouseScore.bind(this)
+        this.chooseSmallStraight = this.chooseSmallStraightScore.bind(this)
+        this.chooseLargeStraight = this.chooseLargeStraightScore.bind(this)
+        this.chooseYahtzee = this.chooseYahtzeeScore.bind(this)
+        this.chooseChance = this.chooseChanceScore.bind(this)
     }
 
     componentDidMount(){

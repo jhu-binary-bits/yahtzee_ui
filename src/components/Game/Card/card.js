@@ -38,71 +38,124 @@ class Card extends Component {
     }
 
     chooseOnesScore() {
-        console.log("clicked on Aces cell")
+        console.log("clicked on Ones cell")
         
         if(this.state.ones == null) {
             document.getElementById("Ones").style.fontWeight = "bold"
-            this.setState({
-                ones: this.props.gameState.data.current_turn.valid_scores[0].points
-            })
+
+            this.publish_score_selected_event("ONES")
+            this.setState({ones:this.props.gameState.data.scorecards[0].scores[0].points})
         } 
     }
 
     chooseTwosScore() {
         if(this.state.twos == null) {
             document.getElementById("Twos").style.fontWeight = "bold"
-            this.setState({
-                twos: this.props.gameState.data.current_turn.valid_scores[1].points
-            })
+
+            this.publish_score_selected_event("TWOS")
+            this.setState({twos:this.props.gameState.data.scorecards[0].scores[1].points})
         }
     }
 
     chooseThreesScore(){
         if(this.state.threes == null) {
             document.getElementById("Threes").style.fontWeight = "bold"
-            this.setState({
-                threes: this.props.gameState.data.current_turn.valid_scores[2].points
-
-            })
+            
+            this.publish_score_selected_event("THREES")
         }
     }
 
     chooseFoursScore() {
         if(this.state.fours == null){
             document.getElementById("Fours").style.fontWeight = "bold"
-            this.setState({
-                fours: this.props.gameState.data.current_turn.valid_scores[3].points
-            })
+
+            this.publish_score_selected_event("FOURS")
         }
     }
 
     chooseFivesScore() {
         if(this.state.fives == null) {
             document.getElementById("Fives").style.fontWeight = "bold"
-            this.setState({
-                fives: this.props.gameState.data.current_turn.valid_scores[4].points
-            })
+
+            this.publish_score_selected_event("FIVES")
         }
     }
 
     chooseSixesScore() {
         if(this.state.sixes == null) {
             document.getElementById("Sixes").style.fontWeight = "bold"
-            this.setState( {
-                sixes: this.props.gameState.data.current_turn.valid_scores[5].points
-            })
+
+            this.publish_score_selected_event("SIXES")
         }
     }
 
-    chooseThreeOfAKind() {
+    chooseThreeOfAKindScore() {
         if(this.state.three_of_a_kind == null) {
             document.getElementById("3OfAKind").style.fontWeight = "bold"
-            this.setState( {
-                three_of_a_kind: this.props.gameState.data.current_turn.valid_scores[6].points
-            })
+
+            this.publish_score_selected_event("THREE_OF_A_KIND")
         }
     }
 
+    chooseFourOfAKindScore() {
+        if(this.state.four_of_a_kind == null) {
+            document.getElementById("4OfAKind").style.fontWeight = "bold"
+
+            this.publish_score_selected_event("FOUR_OF_A_KIND")
+        }
+    }
+
+    chooseFullHouseScore() {
+        if(this.state.full_house == null) {
+            document.getElementById("FullHouse").style.fontWeight = "bold"
+
+            this.publish_score_selected_event("FULL_HOUSE")
+        }
+    }
+
+    chooseSmallStraightScore() {
+        if(this.state.small_straight == null) {
+            document.getElementById("SmallStraight").style.fontWeight = "bold"
+
+            this.publish_score_selected_event("SMALL_STRAIGHT")
+        }
+    }
+
+    chooseLargeStraightScore() {
+        if(this.state.large_straight == null) {
+            document.getElementById("LargeStraight").style.fontWeight = "bold"
+
+            this.publish_score_selected_event("LARGE_STRAIGHT")
+        }
+    }
+
+    chooseYahtzeeScore() {
+        if(this.state.yahtzee == null) {
+            document.getElementById("Yahtzee").style.fontWeight = "bold"
+
+            this.publish_score_selected_event("Yahtzee")
+        }
+    }
+
+    chooseChanceScore() {
+        if(this.state.chance == null) {
+            document.getElementById("Chance").style.fontWeight = "bold"
+
+            this.publish_score_selected_event("Chance")
+        }
+    }
+
+    publish_score_selected_event(score_type) {
+        let score_selected_event = {
+            "timestamp": Date.now(),
+            "type": "score_selected",
+            "data": {
+                "selected_score_type": score_type,
+                "player_name": this.props.name
+            }
+        }
+        window.client.send(JSON.stringify(score_selected_event))
+    }
     
     render(){
         console.log("Render card called")
@@ -212,43 +265,42 @@ class Card extends Component {
 
                     <tr id="3OfAKind">
                         <td>3 of a Kind</td>
-                        <td colSpan="2" onClick={this.chooseThreeOfAKind}>{this.state.three_of_a_kind}</td>
+                        <td colSpan="2" onClick={this.chooseThreeOfAKindScore}>{this.state.three_of_a_kind}</td>
 
                     </tr>
 
                     <tr id="4ofKind">
                         <td>4 of a Kind</td>
-                        <td colSpan="2">{this.state.four_of_a_kind}</td>
-
+                        <td colSpan="2" onClick={this.chooseFourOfAKindScore}>{this.state.four_of_a_kind}</td>
                     </tr>
 
                     <tr id="FullHouse">
                         <td>Full House</td>
-                        <td colSpan="2">{this.state.full_house}</td>
+                        <td colSpan="2" onClick={this.chooseFullHouseScore}>{this.state.full_house}</td>
 
                     </tr>
 
-                    <tr id="SmStraight">
+                    <tr id="SmallStraight">
                         <td>Small Straight</td>
-                        <td colSpan="2">{this.state.small_straight}</td>
+                        <td colSpan="2" onClick={this.chooseSmallStraightScore}>{this.state.small_straight}</td>
 
                     </tr>
 
-                    <tr id="LgStraight">
+                    <tr id="LargeStraight">
                         <td>Large Straight</td>
-                        <td colSpan="2">{this.state.large_straight}</td>
+                        <td colSpan="2" onClick={this.chooseLargeStraightScore}>{this.state.large_straight}</td>
 
                     </tr>
 
-                    <tr id="5ofKind">
+                    <tr id="Yahtzee">
                         <td>Yahtzee - Five of a Kind</td>
-                        <td colSpan="2">{this.state.yahtzee}</td>
+                        <td colSpan="2" onClick={this.chooseYahtzee}>{this.state.yahtzee}</td>
 
                     </tr>
 
                     <tr id="Chance">
                         <td>Chance</td>
-                        <td colSpan="2">{this.state.chance}</td>
+                        <td colSpan="2" onClick={this.chooseChance}>{this.state.chance}</td>
 
                     </tr>
 

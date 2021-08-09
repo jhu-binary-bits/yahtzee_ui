@@ -141,20 +141,26 @@ class Dice extends Component {
                     </div>
                 ) : (
                     <div>
-                    {Object.keys(this.state.dicegroup).map(icon => (
-                      <div className={this.state.dicegroup.[icon]['selected'] ?
-                      "withBorder" : "noBorder"} >
-                          <img src={this.state.dicegroup[icon]['image']}
-                          id={this.state.dicegroup[icon]['name']}
-                          onClick={(e) => this.onIconClick(e)}
-                          width="75px"
-                          height="75px"/>
-                      </div>
-                    ))}
+                        {Object.keys(this.state.dicegroup).map(icon => (
+                          <div className={this.state.dicegroup.[icon]['selected'] ?
+                          "withBorder" : "noBorder"} >
+                              <img src={this.state.dicegroup[icon]['image']}
+                              id={this.state.dicegroup[icon]['name']}
+                              onClick={(e) => this.onIconClick(e)}
+                              width="75px"
+                              height="75px"/>
+                          </div>
+                        ))}
 
-                    <div className="RollDice" >
-                        <input type="button" onClick={this.rollDice} value="Roll Selected Dice"></input>
-                    </div>
+
+                        {(this.props.gameState.data.current_turn.player == this.props.name) ? (
+                            <div className="RollDice" >
+                                <input type="button" onClick={this.rollDice} value="Roll Selected Dice"></input>
+                            </div>
+                        ) : (
+                          <div></div>
+                        )}
+
                     </div>
                 )}
 

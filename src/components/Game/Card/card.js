@@ -42,7 +42,6 @@ class Card extends Component {
     componentDidMount(){
         console.log("Component did Mount")
         console.log("Component Mount player : " + this.props.name + " player order " + this.state.playerOrder)
-
     }
 
     chooseOnesScore() {
@@ -200,24 +199,6 @@ class Card extends Component {
                     scorecards
                 </p>
 
-                {/* {(this.props.gameState.data.game_started && this.props.beginPlay == true)? 
-                    this.setState({
-                        // playerOrder: i,
-                        ones: this.props.gameState.data.current_turn.valid_scores[0].points,
-                        twos: this.props.gameState.data.current_turn.valid_scores[1].points,
-                        threes: this.props.gameState.data.current_turn.valid_scores[2].points,
-                        fours: this.props.gameState.data.current_turn.valid_scores[3].points,
-                        fives: this.props.gameState.data.current_turn.valid_scores[4].points,
-                        sixes: this.props.gameState.data.current_turn.valid_scores[5].points,
-                        three_of_a_kind: this.props.gameState.data.current_turn.valid_scores[6].points,
-                        four_of_a_kind: null,
-                        full_house: null,
-                        small_straight: null,
-                        large_straight: null,
-                        yahtzee: null,
-                        chance: null
-                    }) : null
-                } */}
                 <table className="ScoreCardTable">
                     <tr id="CardTitle">
                     

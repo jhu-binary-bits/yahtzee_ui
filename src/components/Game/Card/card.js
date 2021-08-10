@@ -8,7 +8,7 @@ class Card extends Component {
         super(props)
         console.log("Card constructor called")
         this.state = {
-            playerOrder: null,
+            playerOrder: Object.entries(this.props.gameState.data.players).length + 1,
             ones: null,
             twos: null,
             threes: null,
@@ -41,6 +41,8 @@ class Card extends Component {
 
     componentDidMount(){
         console.log("Component did Mount")
+        console.log("Component Mount player : " + this.props.name + " player order " + this.state.playerOrder)
+
     }
 
     chooseOnesScore() {
@@ -51,6 +53,8 @@ class Card extends Component {
 
             this.publish_score_selected_event("ONES")
             this.setState({ones:this.props.gameState.data.scorecards[0].scores[0].points})
+            console.log("SCORE Ones POINTS " + this.props.gameState.data.scorecards[0].scores[0].points)
+            
         } 
     }
 
@@ -60,6 +64,8 @@ class Card extends Component {
 
             this.publish_score_selected_event("TWOS")
             this.setState({twos:this.props.gameState.data.scorecards[0].scores[1].points})
+            console.log("SCORE Twos POINTS " + this.props.gameState.data.scorecards[0].scores[1].points)
+
         }
     }
 
@@ -68,6 +74,8 @@ class Card extends Component {
             document.getElementById("Threes").style.fontWeight = "bold"
             
             this.publish_score_selected_event("THREES")
+            this.setState({threes: this.props.gameState.data.scorecards[0].scores[2].points})
+            console.log("SCORE Threes POINTS " + this.props.gameState.data.scorecards[0].scores[2].points)
         }
     }
 
@@ -76,6 +84,8 @@ class Card extends Component {
             document.getElementById("Fours").style.fontWeight = "bold"
 
             this.publish_score_selected_event("FOURS")
+            this.setState({fours: this.props.gameState.data.scorecards[0].scores[3].points})
+            console.log("SCORE Fours POINTS " + this.props.gameState.data.scorecards[0].scores[3].points)
         }
     }
 
@@ -84,6 +94,8 @@ class Card extends Component {
             document.getElementById("Fives").style.fontWeight = "bold"
 
             this.publish_score_selected_event("FIVES")
+            this.setState({fives: this.props.gameState.data.scorecards[0].scores[4].points})
+            console.log("SCORE Fives POINTS " + this.props.gameState.data.scorecards[0].scores[4].points)
         }
     }
 
@@ -92,6 +104,8 @@ class Card extends Component {
             document.getElementById("Sixes").style.fontWeight = "bold"
 
             this.publish_score_selected_event("SIXES")
+            this.setState({sixes: this.props.gameState.data.scorecards[0].scores[5].points})
+            console.log("SCORE Sixes POINTS " + this.props.gameState.data.scorecards[0].scores[5].points)
         }
     }
 
@@ -100,6 +114,8 @@ class Card extends Component {
             document.getElementById("3OfAKind").style.fontWeight = "bold"
 
             this.publish_score_selected_event("THREE_OF_A_KIND")
+            this.setState({three_of_a_kind: this.props.gameState.data.scorecards[0].scores[6].points})
+            console.log("SCORE Three Kind POINTS " + this.props.gameState.data.scorecards[0].scores[6].points)
         }
     }
 
@@ -108,6 +124,8 @@ class Card extends Component {
             document.getElementById("4OfAKind").style.fontWeight = "bold"
 
             this.publish_score_selected_event("FOUR_OF_A_KIND")
+            this.setState({four_of_a_kind: this.props.gameState.data.scorecards[0].scores[7].points})
+            console.log("SCORE Four Kind POINTS " + this.props.gameState.data.scorecards[0].scores[7].points)
         }
     }
 
@@ -116,6 +134,8 @@ class Card extends Component {
             document.getElementById("FullHouse").style.fontWeight = "bold"
 
             this.publish_score_selected_event("FULL_HOUSE")
+            this.setState({full_house: this.props.gameState.data.scorecards[0].scores[8].points})
+            console.log("SCORE Full House POINTS " + this.props.gameState.data.scorecards[0].scores[8].points)
         }
     }
 
@@ -124,6 +144,8 @@ class Card extends Component {
             document.getElementById("SmallStraight").style.fontWeight = "bold"
 
             this.publish_score_selected_event("SMALL_STRAIGHT")
+            this.setState({small_straight: this.props.gameState.data.scorecards[0].scores[9].points})
+            console.log("SCORE Small Straight POINTS " + this.props.gameState.data.scorecards[0].scores[9].points)
         }
     }
 
@@ -132,6 +154,8 @@ class Card extends Component {
             document.getElementById("LargeStraight").style.fontWeight = "bold"
 
             this.publish_score_selected_event("LARGE_STRAIGHT")
+            this.setState({large_straight: this.props.gameState.data.scorecards[0].scores[10].points})
+            console.log("SCORE Large Straight POINTS " + this.props.gameState.data.scorecards[0].scores[10].points)
         }
     }
 
@@ -140,6 +164,8 @@ class Card extends Component {
             document.getElementById("Yahtzee").style.fontWeight = "bold"
 
             this.publish_score_selected_event("Yahtzee")
+            this.setState({yahtzee: this.props.gameState.data.scorecards[0].scores[11].points})
+            console.log("SCORE Yahtzee POINTS " + this.props.gameState.data.scorecards[0].scores[11].points)
         }
     }
 
@@ -148,6 +174,8 @@ class Card extends Component {
             document.getElementById("Chance").style.fontWeight = "bold"
 
             this.publish_score_selected_event("Chance")
+            this.setState({chance: this.props.gameState.data.scorecards[0].scores[12].points})
+            console.log("SCORE Chance POINTS " + this.props.gameState.data.scorecards[0].scores[12].points)
         }
     }
 
@@ -172,7 +200,7 @@ class Card extends Component {
                     scorecards
                 </p>
 
-                {(this.props.gameState.data.game_started && this.props.beginPlay == true)? 
+                {/* {(this.props.gameState.data.game_started && this.props.beginPlay == true)? 
                     this.setState({
                         // playerOrder: i,
                         ones: this.props.gameState.data.current_turn.valid_scores[0].points,
@@ -189,7 +217,7 @@ class Card extends Component {
                         yahtzee: null,
                         chance: null
                     }) : null
-                }
+                } */}
                 <table className="ScoreCardTable">
                     <tr id="CardTitle">
                     

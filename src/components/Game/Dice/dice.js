@@ -134,6 +134,10 @@ class Dice extends Component {
                         <input type="button" onClick={this.startGame} value="Start Game" className="startGameButton"></input>
                     </div>
                 ) : (
+                    <div>
+                      <div>
+                        <h4>{this.props.gameState.data.current_turn.player}'s turn ({this.props.gameState.data.current_turn.roll_count}/13)</h4>
+                     </div>
                       <div>
                         {Object.keys(this.state.dicegroup).map(icon => (
                           <div className={this.state.dicegroup.[icon]['selected'] ?
@@ -154,6 +158,7 @@ class Dice extends Component {
                           <div></div>
                         )}
                     </div>
+                  </div>
                 )}
             </div>
         )

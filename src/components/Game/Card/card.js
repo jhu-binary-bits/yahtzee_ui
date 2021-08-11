@@ -47,7 +47,7 @@ class Card extends Component {
     chooseOnesScore() {
         console.log("clicked on Ones cell")
         
-        if(this.state.ones == null) {
+        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
             document.getElementById("Ones").style.fontWeight = "bold"
 
             this.publish_score_selected_event("ONES")
@@ -58,7 +58,7 @@ class Card extends Component {
     }
 
     chooseTwosScore() {
-        if(this.state.twos == null) {
+        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
             document.getElementById("Twos").style.fontWeight = "bold"
 
             this.publish_score_selected_event("TWOS")
@@ -69,7 +69,7 @@ class Card extends Component {
     }
 
     chooseThreesScore(){
-        if(this.state.threes == null) {
+        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
             document.getElementById("Threes").style.fontWeight = "bold"
             
             this.publish_score_selected_event("THREES")
@@ -79,7 +79,7 @@ class Card extends Component {
     }
 
     chooseFoursScore() {
-        if(this.state.fours == null){
+        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
             document.getElementById("Fours").style.fontWeight = "bold"
 
             this.publish_score_selected_event("FOURS")
@@ -89,7 +89,7 @@ class Card extends Component {
     }
 
     chooseFivesScore() {
-        if(this.state.fives == null) {
+        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
             document.getElementById("Fives").style.fontWeight = "bold"
 
             this.publish_score_selected_event("FIVES")
@@ -99,7 +99,7 @@ class Card extends Component {
     }
 
     chooseSixesScore() {
-        if(this.state.sixes == null) {
+        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
             document.getElementById("Sixes").style.fontWeight = "bold"
 
             this.publish_score_selected_event("SIXES")
@@ -109,7 +109,7 @@ class Card extends Component {
     }
 
     chooseThreeOfAKindScore() {
-        if(this.state.three_of_a_kind == null) {
+        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
             document.getElementById("3OfAKind").style.fontWeight = "bold"
 
             this.publish_score_selected_event("THREE_OF_A_KIND")
@@ -119,7 +119,7 @@ class Card extends Component {
     }
 
     chooseFourOfAKindScore() {
-        if(this.state.four_of_a_kind == null) {
+        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
             document.getElementById("4OfAKind").style.fontWeight = "bold"
 
             this.publish_score_selected_event("FOUR_OF_A_KIND")
@@ -129,7 +129,7 @@ class Card extends Component {
     }
 
     chooseFullHouseScore() {
-        if(this.state.full_house == null) {
+        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
             document.getElementById("FullHouse").style.fontWeight = "bold"
 
             this.publish_score_selected_event("FULL_HOUSE")
@@ -139,7 +139,7 @@ class Card extends Component {
     }
 
     chooseSmallStraightScore() {
-        if(this.state.small_straight == null) {
+        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
             document.getElementById("SmallStraight").style.fontWeight = "bold"
 
             this.publish_score_selected_event("SMALL_STRAIGHT")
@@ -149,7 +149,7 @@ class Card extends Component {
     }
 
     chooseLargeStraightScore() {
-        if(this.state.large_straight == null) {
+        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
             document.getElementById("LargeStraight").style.fontWeight = "bold"
 
             this.publish_score_selected_event("LARGE_STRAIGHT")
@@ -159,7 +159,7 @@ class Card extends Component {
     }
 
     chooseYahtzeeScore() {
-        if(this.state.yahtzee == null) {
+        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
             document.getElementById("Yahtzee").style.fontWeight = "bold"
 
             this.publish_score_selected_event("Yahtzee")
@@ -169,7 +169,7 @@ class Card extends Component {
     }
 
     chooseChanceScore() {
-        if(this.state.chance == null) {
+        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
             document.getElementById("Chance").style.fontWeight = "bold"
 
             this.publish_score_selected_event("Chance")

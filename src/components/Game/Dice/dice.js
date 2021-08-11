@@ -14,28 +14,28 @@ class Dice extends Component {
         super(props);
         this.state = {
           dicegroup :{
-            dice1: {
-              name: "dice1",
+            "1": {
+              die_id: "1",
               image: roll1,
               selected: false,
             },
-            dice2: {
-              name: "dice2",
+            "2": {
+              die_id: "2",
               image: roll1,
               selected: false,
             },
-            dice3: {
-              name: "dice3",
+            "3": {
+              die_id: "3",
               image: roll1,
               selected: false,
             },
-            dice4: {
-              name: "dice4",
+            "4": {
+              die_id: "4",
               image: roll1,
               selected: false,
             },
-            dice5: {
-              name: "dice5",
+            "5": {
+              die_id: "5",
               image: roll1,
               selected: false,
             },
@@ -46,12 +46,12 @@ class Dice extends Component {
         this.startGame = this.startGame.bind(this);
     }
 
-    rollDice(event){
+    rollDice(event) {
       console.log("The roll dice button was clicked");
       const selectedDice = []
       for (let selection in this.state.dicegroup){
         if(this.state.dicegroup[selection].selected == true){
-          selectedDice.push(this.state.dicegroup[selection].name);
+          selectedDice.push(this.state.dicegroup[selection].die_id);
         }
       }
       let diceEvent = {
@@ -65,24 +65,20 @@ class Dice extends Component {
       window.client.send(JSON.stringify(diceEvent))
     }
 
-
     onIconClick(event) {
-
-      let newState = Object.assign({}, this.state);
-      for (let selection in newState.dicegroup) {
-          if (selection !== event.target.id) {
-              newState.dicegroup[selection].selected = this.state.dicegroup[selection].selected;
-          }
-       }
-
-      newState.dicegroup[event.target.id].selected = !this.state.dicegroup[event.target.id].selected;
-      newState.gamestart = this.state.gamestart
-      console.log(this.state.dicegroup[event.target.id].name + " selected");
-      this.setState({newState,})
-    }
-
-
-
+          console.log("event")
+          console.log(event)
+          let newState = Object.assign({}, this.state);
+          for (let selection in newState.dicegroup) {
+              if (selection !== event.target.id) {
+                  newState.dicegroup[selection].selected = this.state.dicegroup[selection].selected;
+              }
+           }
+    
+          newState.dicegroup[event.target.id].selected = !this.state.dicegroup[event.target.id].selected;
+          console.log(this.state.dicegroup[event.target.id].die_id + " selected");
+          this.setState({newState,})
+      }    
 
     startGame(event) {
         console.log("The start game button was clicked");
@@ -93,7 +89,6 @@ class Dice extends Component {
           }
           window.client.send(JSON.stringify(messageEvent))
     }
-
 
     render() {
         var count = 0;
@@ -134,24 +129,22 @@ class Dice extends Component {
         return(
 
             <div className="Dice" >
-
                 {(!this.props.gameState.data.game_started) ? (
                     <div className="StartGame" align="center">
                         <input type="button" onClick={this.startGame} value="Start Game" className="startGameButton"></input>
                     </div>
                 ) : (
-                    <div>
+                      <div>
                         {Object.keys(this.state.dicegroup).map(icon => (
                           <div className={this.state.dicegroup.[icon]['selected'] ?
                           "withBorder" : "noBorder"} >
                               <img src={this.state.dicegroup[icon]['image']}
-                              id={this.state.dicegroup[icon]['name']}
+                              id={this.state.dicegroup[icon]['die_id']}
                               onClick={(e) => this.onIconClick(e)}
                               width="75px"
                               height="75px"/>
                           </div>
                         ))}
-
 
                         {(this.props.gameState.data.current_turn.player == this.props.name) ? (
                             <div className="RollDice" >
@@ -160,20 +153,11 @@ class Dice extends Component {
                         ) : (
                           <div></div>
                         )}
-
                     </div>
                 )}
-
-
-
             </div>
-
-
-
         )
-
     }
-
 }
 
 export default Dice

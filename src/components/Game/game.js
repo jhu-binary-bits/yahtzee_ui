@@ -38,9 +38,6 @@ class Game extends Component {
                         name={this.props.name}
                         gameState={this.props.gameState}>
                     </Dice>
-
-                    
-                    
                     <Card
                         name={this.props.name}
                         gameState={this.props.gameState}>

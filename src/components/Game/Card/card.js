@@ -7,174 +7,23 @@ class Card extends Component {
     constructor(props){
         super(props)
         console.log("Card constructor called")
-        this.state = {
-            playerOrder: Object.entries(this.props.gameState.data.players).length + 1,
-            ones: null,
-            twos: null,
-            threes: null,
-            fours: null,
-            fives: null,
-            sixes: null,
-            three_of_a_kind: null,
-            four_of_a_kind: null,
-            full_house: null,
-            small_straight: null,
-            large_straight: null,
-            yahtzee: null,
-            chance: null
-        }
         
-        this.chooseOnesScore = this.chooseOnesScore.bind(this)
-        this.chooseTwosScore = this.chooseTwosScore.bind(this)
-        this.chooseThreesScore = this.chooseThreesScore.bind(this)
-        this.chooseFoursScore = this.chooseFoursScore.bind(this)
-        this.chooseFivesScore = this.chooseFivesScore.bind(this)
-        this.chooseSixesScore = this.chooseSixesScore.bind(this)
-        this.chooseThreeOfAKind = this.chooseThreeOfAKindScore.bind(this)
-        this.chooseFourOfAKind = this.chooseFourOfAKindScore.bind(this)
-        this.chooseFullHouse = this.chooseFullHouseScore.bind(this)
-        this.chooseSmallStraight = this.chooseSmallStraightScore.bind(this)
-        this.chooseLargeStraight = this.chooseLargeStraightScore.bind(this)
-        this.chooseYahtzee = this.chooseYahtzeeScore.bind(this)
-        this.chooseChance = this.chooseChanceScore.bind(this)
+        this.chooseScore = this.chooseScore.bind(this)
     }
 
     componentDidMount(){
         console.log("Component did Mount")
-        console.log("Component Mount player : " + this.props.name + " player order " + this.state.playerOrder)
+        console.log("Component Mount player : " + this.props.name)
     }
 
-    chooseOnesScore() {
-        console.log("clicked on Ones cell")
+    chooseScore(event) {
+        console.log("Clicked on " + event.target.id + "  cell")
         
-        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
-            document.getElementById("Ones").style.fontWeight = "bold"
+        if (this.props.gameState.data.scorecards[this.props.name].scores[event.target.id] === null 
+            && this.props.gameState.data.current_turn.player === this.props.name) {
+            document.getElementById(event.target.id).style.fontWeight = "bold"
 
-            this.publish_score_selected_event("ONES")
-            this.setState({ones:this.props.gameState.data.scorecards[0].scores[0].points})
-            console.log("SCORE Ones POINTS " + this.props.gameState.data.scorecards[0].scores[0].points)
-            
-        } 
-    }
-
-    chooseTwosScore() {
-        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
-            document.getElementById("Twos").style.fontWeight = "bold"
-
-            this.publish_score_selected_event("TWOS")
-            this.setState({twos:this.props.gameState.data.scorecards[0].scores[1].points})
-            console.log("SCORE Twos POINTS " + this.props.gameState.data.scorecards[0].scores[1].points)
-
-        }
-    }
-
-    chooseThreesScore(){
-        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
-            document.getElementById("Threes").style.fontWeight = "bold"
-            
-            this.publish_score_selected_event("THREES")
-            this.setState({threes: this.props.gameState.data.scorecards[0].scores[2].points})
-            console.log("SCORE Threes POINTS " + this.props.gameState.data.scorecards[0].scores[2].points)
-        }
-    }
-
-    chooseFoursScore() {
-        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
-            document.getElementById("Fours").style.fontWeight = "bold"
-
-            this.publish_score_selected_event("FOURS")
-            this.setState({fours: this.props.gameState.data.scorecards[0].scores[3].points})
-            console.log("SCORE Fours POINTS " + this.props.gameState.data.scorecards[0].scores[3].points)
-        }
-    }
-
-    chooseFivesScore() {
-        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
-            document.getElementById("Fives").style.fontWeight = "bold"
-
-            this.publish_score_selected_event("FIVES")
-            this.setState({fives: this.props.gameState.data.scorecards[0].scores[4].points})
-            console.log("SCORE Fives POINTS " + this.props.gameState.data.scorecards[0].scores[4].points)
-        }
-    }
-
-    chooseSixesScore() {
-        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
-            document.getElementById("Sixes").style.fontWeight = "bold"
-
-            this.publish_score_selected_event("SIXES")
-            this.setState({sixes: this.props.gameState.data.scorecards[0].scores[5].points})
-            console.log("SCORE Sixes POINTS " + this.props.gameState.data.scorecards[0].scores[5].points)
-        }
-    }
-
-    chooseThreeOfAKindScore() {
-        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
-            document.getElementById("3OfAKind").style.fontWeight = "bold"
-
-            this.publish_score_selected_event("THREE_OF_A_KIND")
-            this.setState({three_of_a_kind: this.props.gameState.data.scorecards[0].scores[6].points})
-            console.log("SCORE Three Kind POINTS " + this.props.gameState.data.scorecards[0].scores[6].points)
-        }
-    }
-
-    chooseFourOfAKindScore() {
-        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
-            document.getElementById("4OfAKind").style.fontWeight = "bold"
-
-            this.publish_score_selected_event("FOUR_OF_A_KIND")
-            this.setState({four_of_a_kind: this.props.gameState.data.scorecards[0].scores[7].points})
-            console.log("SCORE Four Kind POINTS " + this.props.gameState.data.scorecards[0].scores[7].points)
-        }
-    }
-
-    chooseFullHouseScore() {
-        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
-            document.getElementById("FullHouse").style.fontWeight = "bold"
-
-            this.publish_score_selected_event("FULL_HOUSE")
-            this.setState({full_house: this.props.gameState.data.scorecards[0].scores[8].points})
-            console.log("SCORE Full House POINTS " + this.props.gameState.data.scorecards[0].scores[8].points)
-        }
-    }
-
-    chooseSmallStraightScore() {
-        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
-            document.getElementById("SmallStraight").style.fontWeight = "bold"
-
-            this.publish_score_selected_event("SMALL_STRAIGHT")
-            this.setState({small_straight: this.props.gameState.data.scorecards[0].scores[9].points})
-            console.log("SCORE Small Straight POINTS " + this.props.gameState.data.scorecards[0].scores[9].points)
-        }
-    }
-
-    chooseLargeStraightScore() {
-        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
-            document.getElementById("LargeStraight").style.fontWeight = "bold"
-
-            this.publish_score_selected_event("LARGE_STRAIGHT")
-            this.setState({large_straight: this.props.gameState.data.scorecards[0].scores[10].points})
-            console.log("SCORE Large Straight POINTS " + this.props.gameState.data.scorecards[0].scores[10].points)
-        }
-    }
-
-    chooseYahtzeeScore() {
-        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
-            document.getElementById("Yahtzee").style.fontWeight = "bold"
-
-            this.publish_score_selected_event("Yahtzee")
-            this.setState({yahtzee: this.props.gameState.data.scorecards[0].scores[11].points})
-            console.log("SCORE Yahtzee POINTS " + this.props.gameState.data.scorecards[0].scores[11].points)
-        }
-    }
-
-    chooseChanceScore() {
-        if (this.state.ones == null && this.props.gameState.data.current_turn.player == this.props.name) {
-            document.getElementById("Chance").style.fontWeight = "bold"
-
-            this.publish_score_selected_event("Chance")
-            this.setState({chance: this.props.gameState.data.scorecards[0].scores[12].points})
-            console.log("SCORE Chance POINTS " + this.props.gameState.data.scorecards[0].scores[12].points)
+            this.publish_score_selected_event(event.target.id)            
         }
     }
 
@@ -199,6 +48,8 @@ class Card extends Component {
                     scorecards
                 </p>
 
+                {(this.props.gameState.data.game_started) ? (
+
                 <table className="ScoreCardTable">
                     <tr id="CardTitle">
                     
@@ -217,56 +68,59 @@ class Card extends Component {
                         </th>
                     </tr>
 
-                    <tr id="Ones">
-                        <td>Aces</td>
-                        <td colSpan="2" onClick={this.chooseOnesScore}>{this.state.ones}</td>
-
+                    <tr id="ONES">
+                        <td>Ones</td>
+                        <td id="ONES" colSpan="2" onClick={this.chooseScore}>
+                            {this.props.gameState.data.scorecards[this.props.name].scores["ONES"]}
+                        </td>
                     </tr>
 
-                    <tr id="Twos">
+                    <tr id="TWOS">
                         <td>Twos</td>
-                        <td id="Twos" colSpan="2" onClick={this.chooseTwosScore}>{this.state.twos}</td>
-
+                        <td id="TWOS" colSpan="2" onClick={this.chooseScore}>
+                            {this.props.gameState.data.scorecards[this.props.name].scores["TWOS"]}
+                        </td>
                     </tr>
 
-                    <tr id="Threes">
+                    <tr id="THREES">
                         <td>Threes</td>
-                        <td id="Threes" colSpan="2" onClick={this.chooseThreesScore}>{this.state.threes}</td>
-
+                        <td id="THREES" colSpan="2" onClick={this.chooseScore}>
+                            {this.props.gameState.data.scorecards[this.props.name].scores["THREES"]}
+                        </td>
                     </tr>
 
-                    <tr id="Fours">
+                    <tr id="FOURS">
                         <td>Fours</td>
-                        <td id="Fours" colSpan="2" onClick={this.chooseFoursScore}>{this.state.fours}</td>
+                        <td id="FOURS" colSpan="2" onClick={this.chooseScore}>
+                            {this.props.gameState.data.scorecards[this.props.name].scores["FOURS"]}
+                        </td>
 
                     </tr>
 
-                    <tr id="Fives">
+                    <tr id="FIVES">
                         <td>Fives</td>
-                        <td id="Fives" colSpan="2" onClick={this.chooseFivesScore}>{this.state.fives}</td>
+                        <td id="FIVES" colSpan="2" onClick={this.chooseScore}>
+                            {this.props.gameState.data.scorecards[this.props.name].scores["FIVES"]}
+                        </td>
 
                     </tr>
 
-                    <tr id="Sixes">
+                    <tr id="SIXES">
                         <td>Sixes</td>
-                        <td colSpan="2" onClick={this.chooseSixesScore}>{this.state.sixes}</td>
-
-                    </tr>
-
-                    <tr id="UpperTotal">
-                        <td>Total</td>
-                        <td colSpan="2">{}</td>
+                        <td id="SIXES" colSpan="2" onClick={this.chooseScore}>
+                            {this.props.gameState.data.scorecards[this.props.name].scores["SIXES"]}
+                        </td>
 
                     </tr>
 
                     <tr id="UpperBonus">
-                        <td>UpperBonus</td>
+                        <td>Upper Bonus</td>
                         <td colSpan="2">{}</td>
 
                     </tr>
 
                     <tr id="UpperTotalWBonus">
-                        <td>UpperTotal W/ Bonus</td>
+                        <td>Upper Total</td>
                         <td colSpan="2">{}</td>
 
                     </tr>
@@ -278,69 +132,82 @@ class Card extends Component {
 
                     </tr>
 
-                    <tr id="3OfAKind">
+                    <tr id="THREE_OF_A_KIND">
                         <td>3 of a Kind</td>
-                        <td colSpan="2" onClick={this.chooseThreeOfAKindScore}>{this.state.three_of_a_kind}</td>
+                        <td id="THREE_OF_A_KIND" colSpan="2" onClick={this.chooseScore}>
+                            {this.props.gameState.data.scorecards[this.props.name].scores["THREE_OF_A_KIND"]}
+                        </td>
 
                     </tr>
 
-                    <tr id="4ofKind">
+                    <tr id="FOUR_OF_A_KIND">
                         <td>4 of a Kind</td>
-                        <td colSpan="2" onClick={this.chooseFourOfAKindScore}>{this.state.four_of_a_kind}</td>
+                        <td id="FOUR_OF_A_KIND" colSpan="2" onClick={this.chooseScore}>
+                            {this.props.gameState.data.scorecards[this.props.name].scores["FOUR_OF_A_KIND"]}
+                        </td>
                     </tr>
 
-                    <tr id="FullHouse">
+                    <tr id="FULL_HOUSE">
                         <td>Full House</td>
-                        <td colSpan="2" onClick={this.chooseFullHouseScore}>{this.state.full_house}</td>
-
+                        <td id="FULL_HOUSE" colSpan="2" onClick={this.chooseScore}>
+                            {this.props.gameState.data.scorecards[this.props.name].scores["FULL_HOUSE"]}
+                        </td>
                     </tr>
 
-                    <tr id="SmallStraight">
+                    <tr id="SMALL_STRAIGHT">
                         <td>Small Straight</td>
-                        <td colSpan="2" onClick={this.chooseSmallStraightScore}>{this.state.small_straight}</td>
+                        <td id="SMALL_STRAIGHT" colSpan="2" onClick={this.chooseScore}>
+                            {this.props.gameState.data.scorecards[this.props.name].scores["SMALL_STRAIGHT"]}
+                        </td>
 
                     </tr>
 
-                    <tr id="LargeStraight">
+                    <tr id="LARGE_STRAIGHT">
                         <td>Large Straight</td>
-                        <td colSpan="2" onClick={this.chooseLargeStraightScore}>{this.state.large_straight}</td>
+                        <td id="LARGE_STRAIGHT" colSpan="2" onClick={this.chooseScore}>
+                            {this.props.gameState.data.scorecards[this.props.name].scores["LARGE_STRAIGHT"]}
+                        </td>
 
                     </tr>
 
-                    <tr id="Yahtzee">
+                    <tr id="YAHTZEE">
                         <td>Yahtzee - Five of a Kind</td>
-                        <td colSpan="2" onClick={this.chooseYahtzee}>{this.state.yahtzee}</td>
+                        <td id="YAHTZEE" colSpan="2" onClick={this.chooseScore}>
+                            {this.props.gameState.data.scorecards[this.props.name].scores["YAHTZEE"]}
+                        </td>
 
                     </tr>
 
-                    <tr id="Chance">
+                    <tr id="CHANCE">
                         <td>Chance</td>
-                        <td colSpan="2" onClick={this.chooseChance}>{this.state.chance}</td>
+                        <td id="CHANCE" colSpan="2" onClick={this.chooseScore}>
+                            {this.props.gameState.data.scorecards[this.props.name].scores["CHANCE"]}
+                        </td>
 
                     </tr>
 
                     <tr id="YahtzeeBonusTotal">
-                        <td>YahtzeeBonusTotal</td>
+                        <td>Yahtzee Bonus Total</td>
                         <td colSpan="2">{}</td>
 
                     </tr>
 
                     <tr id="LowerTotal">
-                        <td>LowerTotal</td>
+                        <td>Lower Total</td>
                         <td colSpan="2">{}</td>
 
                     </tr>
                     <br></br>
 
                     <tr id="GrandTotal">
-                        <td>GrandTotal</td>
+                        <td>Grand Total</td>
                         <td colSpan="2">{}</td>
 
                     </tr>
                             
                 </table>
                  
-             
+                ) : null}
 
 
 

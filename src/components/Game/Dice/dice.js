@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './dice.css';
+import roll0 from './images/roll0.jpg'
 import roll1 from './images/roll1.jpg';
 import roll2 from './images/roll2.jpg';
 import roll3 from './images/roll3.jpg';
@@ -46,11 +47,22 @@ class Dice extends Component {
         this.startGame = this.startGame.bind(this);
     }
 
+    isFirstRollOfCurrentTurn() {
+      return this.props.gameState.data.game_started &&
+             this.props.gameState.data.current_turn.roll_count == 0
+    }
+
+    isMaxRollsForCurrentTurn() {
+      return this.props.gameState.data.game_started &&
+             this.props.gameState.data.current_turn.roll_count == 3
+    }
+
     rollDice(event) {
       console.log("The roll dice button was clicked");
       const selectedDice = []
       for (let selection in this.state.dicegroup){
-        if(this.state.dicegroup[selection].selected == true){
+        if(this.state.dicegroup[selection].selected == true ||
+           this.isFirstRollOfCurrentTurn()){
           selectedDice.push(this.state.dicegroup[selection].die_id);
         }
       }
@@ -92,7 +104,7 @@ class Dice extends Component {
 
     render() {
         var count = 0;
-        if (this.props.gameState.data.game_started){
+        if (this.props.gameState.data.game_started && !this.isFirstRollOfCurrentTurn()){
           var dicevals = this.props.gameState.data.current_turn.last_roll;
 
           for (let selection in this.state.dicegroup) {
@@ -121,7 +133,8 @@ class Dice extends Component {
         }
         else{
           for (let selection in this.state.dicegroup) {
-            this.state.dicegroup[selection].image = roll1;
+            this.state.dicegroup[selection].image = roll0;
+            this.state.dicegroup[selection].selected = false;
           }
         }
 
@@ -150,10 +163,15 @@ class Dice extends Component {
                               height="75px"/>
                           </div>
                         ))}
-                        {(this.props.gameState.data.current_turn.player == this.props.name) ? (
-                            <div className="RollDice" >
-                                <input type="button" onClick={this.rollDice} value="Roll Selected Dice"></input>
+                        {(this.props.gameState.data.current_turn.player == this.props.name &&
+                          !this.isMaxRollsForCurrentTurn()) ? (
+                            <div className="RollDice">
+                                <input type="button" onClick={this.rollDice} value={this.isFirstRollOfCurrentTurn() ? "Roll All Dice" : "Roll Selected Dice"}></input>
                             </div>
+                        ) : (this.isMaxRollsForCurrentTurn()) ? (
+                          <div className="RollDice">
+                            <p>Please select a score.</p>
+                          </div>
                         ) : (
                           <div></div>
                         )}

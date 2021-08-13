@@ -13,7 +13,6 @@ class Card extends Component {
 
     componentDidMount(){
         console.log("Component did Mount")
-        console.log("Component Mount player : " + this.props.name)
     }
 
     chooseScore(event) {
@@ -40,32 +39,30 @@ class Card extends Component {
     }
     
     render(){
-        console.log("Render card called")
-
         return(
             <div className="Card">
-                <p>
-                    scorecards
-                </p>
-
+                
                 {(this.props.gameState.data.game_started) ? (
 
                 <table className="ScoreCardTable">
-                    <tr id="CardTitle">
-                    
-                        <th colSpan="4">
-                            Player: {this.props.name}
-                        </th>
-
-                    </tr>
-
+                
                     <tr id="CardUpper">
                         <th colSpan="2">
                             <h3>Upper Section</h3>
                         </th>
                         <th colSpan="2">
-                            <h3>Score</h3>
+                            <h3>Scores</h3>
                         </th>
+                    </tr>
+
+                    <tr id="PlayerNames">
+                        <th colSpan="2"></th>
+                        <th colSpan="2">{this.props.name}</th>
+                        {Object.entries(this.props.gameState.data.scorecards).map( (item) => {
+                            if(this.props.name != item[0]){
+                                return <th colSpan="2">{item[0]}</th>
+                            }
+                        })}
                     </tr>
 
                     <tr id="ONES">
@@ -73,6 +70,14 @@ class Card extends Component {
                         <td id="ONES" colSpan="2" onClick={this.chooseScore}>
                             {this.props.gameState.data.scorecards[this.props.name].scores["ONES"]}
                         </td>
+
+                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
+                            if(item[0] != this.props.name){
+                                return <td colSpan="2">
+                                    {item[1].scores["ONES"]}
+                                </td>
+                            }
+                        })}
                     </tr>
 
                     <tr id="TWOS">
@@ -80,6 +85,14 @@ class Card extends Component {
                         <td id="TWOS" colSpan="2" onClick={this.chooseScore}>
                             {this.props.gameState.data.scorecards[this.props.name].scores["TWOS"]}
                         </td>
+
+                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
+                            if(item[0] != this.props.name){
+                                return <td colSpan="2">
+                                    {item[1].scores["TWOS"]}
+                                </td>
+                            }
+                        })}
                     </tr>
 
                     <tr id="THREES">
@@ -87,6 +100,13 @@ class Card extends Component {
                         <td id="THREES" colSpan="2" onClick={this.chooseScore}>
                             {this.props.gameState.data.scorecards[this.props.name].scores["THREES"]}
                         </td>
+                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
+                            if(item[0] != this.props.name){
+                                return <td colSpan="2">
+                                    {item[1].scores["THREES"]}
+                                </td>
+                            }
+                        })}
                     </tr>
 
                     <tr id="FOURS">
@@ -94,7 +114,13 @@ class Card extends Component {
                         <td id="FOURS" colSpan="2" onClick={this.chooseScore}>
                             {this.props.gameState.data.scorecards[this.props.name].scores["FOURS"]}
                         </td>
-
+                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
+                            if(item[0] != this.props.name){
+                                return <td colSpan="2">
+                                    {item[1].scores["FOURS"]}
+                                </td>
+                            } 
+                        })}
                     </tr>
 
                     <tr id="FIVES">
@@ -102,7 +128,13 @@ class Card extends Component {
                         <td id="FIVES" colSpan="2" onClick={this.chooseScore}>
                             {this.props.gameState.data.scorecards[this.props.name].scores["FIVES"]}
                         </td>
-
+                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
+                            if(item[0] != this.props.name){
+                                return <td colSpan="2">
+                                    {item[1].scores["FIVES"]}
+                                </td>
+                            }
+                        })}
                     </tr>
 
                     <tr id="SIXES">
@@ -110,7 +142,13 @@ class Card extends Component {
                         <td id="SIXES" colSpan="2" onClick={this.chooseScore}>
                             {this.props.gameState.data.scorecards[this.props.name].scores["SIXES"]}
                         </td>
-
+                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
+                            if(item[0] != this.props.name){
+                                return <td colSpan="2">
+                                    {item[1].scores["SIXES"]}
+                                </td>
+                            }
+                        })}
                     </tr>
 
                     <tr id="UpperBonus">
@@ -137,7 +175,13 @@ class Card extends Component {
                         <td id="THREE_OF_A_KIND" colSpan="2" onClick={this.chooseScore}>
                             {this.props.gameState.data.scorecards[this.props.name].scores["THREE_OF_A_KIND"]}
                         </td>
-
+                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
+                            if(item[0] != this.props.name){
+                                return <td colSpan="2">
+                                    {item[1].scores["THREE_OF_A_KIND"]}
+                                </td>
+                            }
+                        })}
                     </tr>
 
                     <tr id="FOUR_OF_A_KIND">
@@ -145,6 +189,13 @@ class Card extends Component {
                         <td id="FOUR_OF_A_KIND" colSpan="2" onClick={this.chooseScore}>
                             {this.props.gameState.data.scorecards[this.props.name].scores["FOUR_OF_A_KIND"]}
                         </td>
+                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
+                            if(item[0] != this.props.name){
+                                return <td colSpan="2">
+                                    {item[1].scores["FOUR_OF_A_KIND"]}
+                                </td>
+                            }
+                        })}
                     </tr>
 
                     <tr id="FULL_HOUSE">
@@ -152,6 +203,13 @@ class Card extends Component {
                         <td id="FULL_HOUSE" colSpan="2" onClick={this.chooseScore}>
                             {this.props.gameState.data.scorecards[this.props.name].scores["FULL_HOUSE"]}
                         </td>
+                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
+                            if(item[0] != this.props.name){
+                                return <td colSpan="2">
+                                    {item[1].scores["FULL_HOUSE"]}
+                                </td>
+                            }  
+                        })}
                     </tr>
 
                     <tr id="SMALL_STRAIGHT">
@@ -159,6 +217,14 @@ class Card extends Component {
                         <td id="SMALL_STRAIGHT" colSpan="2" onClick={this.chooseScore}>
                             {this.props.gameState.data.scorecards[this.props.name].scores["SMALL_STRAIGHT"]}
                         </td>
+                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
+                            if(item[0] != this.props.name){
+                                return <td colSpan="2">
+                                    {item[1].scores["SMALL_STRAIGHT"]}
+                                </td>
+                            }
+                            
+                        })}
 
                     </tr>
 
@@ -167,6 +233,14 @@ class Card extends Component {
                         <td id="LARGE_STRAIGHT" colSpan="2" onClick={this.chooseScore}>
                             {this.props.gameState.data.scorecards[this.props.name].scores["LARGE_STRAIGHT"]}
                         </td>
+                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
+                            if(item[0] != this.props.name){
+                                return <td colSpan="2">
+                                    {item[1].scores["LARGE_STRAIGHT"]}
+                                </td>
+                            }
+                            
+                        })}
 
                     </tr>
 
@@ -175,7 +249,14 @@ class Card extends Component {
                         <td id="YAHTZEE" colSpan="2" onClick={this.chooseScore}>
                             {this.props.gameState.data.scorecards[this.props.name].scores["YAHTZEE"]}
                         </td>
-
+                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
+                            if(item[0] != this.props.name){
+                                return <td colSpan="2">
+                                    {item[1].scores["YAHTZEE"]}
+                                </td>
+                            }
+                            
+                        })}
                     </tr>
 
                     <tr id="CHANCE">
@@ -183,12 +264,21 @@ class Card extends Component {
                         <td id="CHANCE" colSpan="2" onClick={this.chooseScore}>
                             {this.props.gameState.data.scorecards[this.props.name].scores["CHANCE"]}
                         </td>
+                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
+                            if(item[0] != this.props.name){
+                                return <td colSpan="2">
+                                    {item[1].scores["CHANCE"]}
+                                </td>
+                            }
+                            
+                        })}
 
                     </tr>
 
                     <tr id="YahtzeeBonusTotal">
                         <td>Yahtzee Bonus Total</td>
                         <td colSpan="2">{}</td>
+                        
 
                     </tr>
 
@@ -197,7 +287,7 @@ class Card extends Component {
                         <td colSpan="2">{}</td>
 
                     </tr>
-                    <br></br>
+                    
 
                     <tr id="GrandTotal">
                         <td>Grand Total</td>

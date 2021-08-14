@@ -39,6 +39,14 @@ class Card extends Component {
         window.client.send(JSON.stringify(score_selected_event))
     }
 
+    check_conditions(score_name){
+      console.log("Checking " + score_name)
+      return this.props.gameState.data.game_started &&
+        this.props.gameState.data.current_turn.player == this.props.name &&
+        this.props.gameState.data.scorecards[this.props.name].scores[score_name] == null &&
+        this.props.gameState.data.current_turn.roll_count != 0
+    }
+
     render(){
         console.log("Render card called")
 
@@ -71,11 +79,8 @@ class Card extends Component {
                     <tr id="ONES">
                         <td>Ones</td>
                         <td id="ONES" className= { this.props.gameState.data.scorecards[this.props.name].scores["ONES"] == null ? 'Column' : 'ColumnSelected' } colSpan="2" onClick={this.chooseScore}>
-                          {(this.props.gameState.data.game_started &&
-                            this.props.gameState.data.current_turn.player == this.props.name &&
-                            this.props.gameState.data.scorecards[this.props.name].scores["ONES"] == null) ? (
+                          {this.check_conditions("ONES") ? (
                               this.props.gameState.data.current_turn.valid_scores["ONES"]
-
                           ) : (
                             this.props.gameState.data.scorecards[this.props.name].scores["ONES"]
                           )}
@@ -85,9 +90,7 @@ class Card extends Component {
                     <tr id="TWOS">
                         <td>Twos</td>
                         <td id="TWOS" className= { this.props.gameState.data.scorecards[this.props.name].scores["TWOS"] == null ? 'Column' : 'ColumnSelected' } colSpan="2" onClick={this.chooseScore}>
-                          {(this.props.gameState.data.game_started &&
-                            this.props.gameState.data.current_turn.player == this.props.name &&
-                            this.props.gameState.data.scorecards[this.props.name].scores["TWOS"] == null) ? (
+                          {this.check_conditions("TWOS") ? (
                               this.props.gameState.data.current_turn.valid_scores["TWOS"]
 
                           ) : (
@@ -99,11 +102,8 @@ class Card extends Component {
                     <tr id="THREES">
                         <td>Threes</td>
                         <td id="THREES" className= { this.props.gameState.data.scorecards[this.props.name].scores["THREES"] == null ? 'Column' : 'ColumnSelected' } colSpan="2" onClick={this.chooseScore}>
-                          {(this.props.gameState.data.game_started &&
-                            this.props.gameState.data.current_turn.player == this.props.name &&
-                            this.props.gameState.data.scorecards[this.props.name].scores["THREES"] == null) ? (
+                          {this.check_conditions("THREES") ? (
                               this.props.gameState.data.current_turn.valid_scores["THREES"]
-
                           ) : (
                             this.props.gameState.data.scorecards[this.props.name].scores["THREES"]
                           )}
@@ -113,9 +113,7 @@ class Card extends Component {
                     <tr id="FOURS">
                         <td>Fours</td>
                         <td id="FOURS" className= { this.props.gameState.data.scorecards[this.props.name].scores["FOURS"] == null ? 'Column' : 'ColumnSelected' } colSpan="2" onClick={this.chooseScore}>
-                          {(this.props.gameState.data.game_started &&
-                            this.props.gameState.data.current_turn.player == this.props.name &&
-                            this.props.gameState.data.scorecards[this.props.name].scores["FOURS"] == null) ? (
+                          {this.check_conditions("FOURS") ? (
                               this.props.gameState.data.current_turn.valid_scores["FOURS"]
 
                           ) : (
@@ -128,9 +126,7 @@ class Card extends Component {
                     <tr id="FIVES">
                         <td>Fives</td>
                         <td id="FIVES" className= { this.props.gameState.data.scorecards[this.props.name].scores["FIVES"] == null ? 'Column' : 'ColumnSelected' } colSpan="2" onClick={this.chooseScore}>
-                          {(this.props.gameState.data.game_started &&
-                            this.props.gameState.data.current_turn.player == this.props.name &&
-                            this.props.gameState.data.scorecards[this.props.name].scores["FIVES"] == null) ? (
+                          {this.check_conditions("FIVES") ? (
                               this.props.gameState.data.current_turn.valid_scores["FIVES"]
 
                           ) : (
@@ -143,9 +139,7 @@ class Card extends Component {
                     <tr id="SIXES">
                         <td>Sixes</td>
                         <td id="SIXES" className= { this.props.gameState.data.scorecards[this.props.name].scores["SIXES"] == null ? 'Column' : 'ColumnSelected' } colSpan="2" onClick={this.chooseScore}>
-                          {(this.props.gameState.data.game_started &&
-                            this.props.gameState.data.current_turn.player == this.props.name &&
-                            this.props.gameState.data.scorecards[this.props.name].scores["SIXES"] == null) ? (
+                          {this.check_conditions("SIXES") ? (
                               this.props.gameState.data.current_turn.valid_scores["SIXES"]
 
                           ) : (
@@ -177,9 +171,7 @@ class Card extends Component {
                     <tr id="THREE_OF_A_KIND">
                         <td>3 of a Kind</td>
                         <td id="THREE_OF_A_KIND" className= { this.props.gameState.data.scorecards[this.props.name].scores["THREE_OF_A_KIND"] == null ? 'Column' : 'ColumnSelected' } colSpan="2" onClick={this.chooseScore}>
-                          {(this.props.gameState.data.game_started &&
-                            this.props.gameState.data.current_turn.player == this.props.name &&
-                            this.props.gameState.data.scorecards[this.props.name].scores["THREE_OF_A_KIND"] == null) ? (
+                          {this.check_conditions("THREE_OF_A_KIND") ? (
                               this.props.gameState.data.current_turn.valid_scores["THREE_OF_A_KIND"]
 
                           ) : (
@@ -192,9 +184,7 @@ class Card extends Component {
                     <tr id="FOUR_OF_A_KIND">
                         <td>4 of a Kind</td>
                         <td id="FOUR_OF_A_KIND" className= { this.props.gameState.data.scorecards[this.props.name].scores["FOUR_OF_A_KIND"] == null ? 'Column' : 'ColumnSelected' } colSpan="2" onClick={this.chooseScore}>
-                          {(this.props.gameState.data.game_started &&
-                            this.props.gameState.data.current_turn.player == this.props.name &&
-                            this.props.gameState.data.scorecards[this.props.name].scores["FOUR_OF_A_KIND"] == null) ? (
+                          {this.check_conditions("FOUR_OF_A_KIND") ? (
                               this.props.gameState.data.current_turn.valid_scores["FOUR_OF_A_KIND"]
 
                           ) : (
@@ -206,9 +196,7 @@ class Card extends Component {
                     <tr id="FULL_HOUSE">
                         <td>Full House</td>
                         <td id="FULL_HOUSE" className= { this.props.gameState.data.scorecards[this.props.name].scores["FULL_HOUSE"] == null ? 'Column' : 'ColumnSelected' } colSpan="2" onClick={this.chooseScore}>
-                          {(this.props.gameState.data.game_started &&
-                            this.props.gameState.data.current_turn.player == this.props.name &&
-                            this.props.gameState.data.scorecards[this.props.name].scores["FULL_HOUSE"] == null) ? (
+                          {this.check_conditions("FULL_HOUSE") ? (
                               this.props.gameState.data.current_turn.valid_scores["FULL_HOUSE"]
 
                           ) : (
@@ -220,9 +208,7 @@ class Card extends Component {
                     <tr id="SMALL_STRAIGHT">
                         <td>Small Straight</td>
                         <td id="SMALL_STRAIGHT" className= { this.props.gameState.data.scorecards[this.props.name].scores["SMALL_STRAIGHT"] == null ? 'Column' : 'ColumnSelected' } colSpan="2" onClick={this.chooseScore}>
-                          {(this.props.gameState.data.game_started &&
-                            this.props.gameState.data.current_turn.player == this.props.name &&
-                            this.props.gameState.data.scorecards[this.props.name].scores["SMALL_STRAIGHT"] == null) ? (
+                          {this.check_conditions("SMALL_STRAIGHT") ? (
                               this.props.gameState.data.current_turn.valid_scores["SMALL_STRAIGHT"]
 
                           ) : (
@@ -235,9 +221,7 @@ class Card extends Component {
                     <tr id="LARGE_STRAIGHT">
                         <td>Large Straight</td>
                         <td id="LARGE_STRAIGHT" className= { this.props.gameState.data.scorecards[this.props.name].scores["LARGE_STRAIGHT"] == null ? 'Column' : 'ColumnSelected' } colSpan="2" onClick={this.chooseScore}>
-                          {(this.props.gameState.data.game_started &&
-                            this.props.gameState.data.current_turn.player == this.props.name &&
-                            this.props.gameState.data.scorecards[this.props.name].scores["LARGE_STRAIGHT"] == null) ? (
+                          {this.check_conditions("LARGE_STRAIGHT") ? (
                               this.props.gameState.data.current_turn.valid_scores["LARGE_STRAIGHT"]
 
                           ) : (
@@ -250,9 +234,7 @@ class Card extends Component {
                     <tr id="YAHTZEE">
                         <td>Yahtzee - Five of a Kind</td>
                         <td id="YAHTZEE" className= { this.props.gameState.data.scorecards[this.props.name].scores["YAHTZEE"] == null ? 'Column' : 'ColumnSelected' } colSpan="2" onClick={this.chooseScore}>
-                          {(this.props.gameState.data.game_started &&
-                            this.props.gameState.data.current_turn.player == this.props.name &&
-                            this.props.gameState.data.scorecards[this.props.name].scores["YAHTZEE"] == null) ? (
+                          {this.check_conditions("YAHTZEE") ? (
                               this.props.gameState.data.current_turn.valid_scores["YAHTZEE"]
 
                           ) : (
@@ -265,9 +247,7 @@ class Card extends Component {
                     <tr id="CHANCE">
                         <td>Chance</td>
                         <td id="CHANCE" className= { this.props.gameState.data.scorecards[this.props.name].scores["CHANCE"] == null ? 'Column' : 'ColumnSelected' } colSpan="2" onClick={this.chooseScore}>
-                          {(this.props.gameState.data.game_started &&
-                            this.props.gameState.data.current_turn.player == this.props.name &&
-                            this.props.gameState.data.scorecards[this.props.name].scores["CHANCE"] == null) ? (
+                          {this.check_conditions("CHANCE") ? (
                               this.props.gameState.data.current_turn.valid_scores["CHANCE"]
 
                           ) : (

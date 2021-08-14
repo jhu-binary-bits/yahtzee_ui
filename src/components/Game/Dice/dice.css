@@ -38,3 +38,9 @@
     margin: 10px 0px;
     cursor: pointer;
 }
+
+.winnerText {
+    margin-top: 250px;
+    font-size: x-large;
+    font-weight: bold;
+}

@@ -146,7 +146,7 @@ class Dice extends Component {
                     <div className="StartGame" align="center">
                         <input type="button" onClick={this.startGame} value="Start Game" className="startGameButton"></input>
                     </div>
-                ) : (
+                ) : (this.props.gameState.data.game_winner.player_name === null) ? (
                     <div>
                       <div>
                         <h4>{this.props.gameState.data.current_turn.player}'s turn - Rolls taken: {this.props.gameState.data.current_turn.roll_count}
@@ -177,7 +177,14 @@ class Dice extends Component {
                         )}
                     </div>
                   </div>
-                )}
+                ) : (
+                      <div align="center">
+                         <p class="winnerText">{this.props.gameState.data.game_winner.player_name} wins with a score of {this.props.gameState.data.game_winner.grand_total}!</p>
+                         <input type="button" onClick={this.startGame} value="Start New Game" className="startGameButton"></input>
+                      </div>
+                      
+                )
+                }
             </div>
         )
     }

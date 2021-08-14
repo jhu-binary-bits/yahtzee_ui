@@ -9,6 +9,11 @@ class Card extends Component {
         console.log("Card constructor called")
         
         this.chooseScore = this.chooseScore.bind(this)
+
+        this.renderPlayerNames = this.renderPlayerNames.bind(this)
+        this.renderScoreRow = this.renderScoreRow.bind(this)
+        this.renderTotalRow = this.renderTotalRow.bind(this)
+        this.renderSeparator = this.renderSeparator.bind(this)
     }
 
     componentDidMount(){
@@ -37,270 +42,114 @@ class Card extends Component {
         }
         window.client.send(JSON.stringify(score_selected_event))
     }
+
+    renderPlayerNames() {
+        return (
+            <tr id="PlayerNames">
+                <th colSpan="2"></th>
+                <th colSpan="2" >{this.props.name}</th>
+                    {Object.entries(this.props.gameState.data.scorecards).map((item) => {
+                        if (this.props.name !== item[0]){
+                            return <th colSpan="2">{item[0]}</th>
+                        }
+                    })}
+            </tr>
+        )
+    }
+
+    renderScoreRow(score_type, score_string) {
+        return (
+            <tr id="score">
+                <td>{score_string}</td>
+                <td id={score_type} colSpan="2" onClick={this.chooseScore} align="center">
+                    {this.props.gameState.data.scorecards[this.props.name].scores[score_type]}
+                </td>
+
+                {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
+                    if (item[0] !== this.props.name){
+                        return <td colSpan="2" align="center">
+                            {item[1].scores[score_type]}
+                        </td>
+                    }
+                })}
+            </tr>
+        )
+    }
+
+    renderTotalRow(total_type, total_string) {
+        let points = this.props.gameState.data.scorecards[this.props.name][total_type]
+        return (
+            <tr id="total">
+                <td>{total_string}</td>
+                    {(points !== 0) ? (
+                        <td id={total_type} colSpan="2" align="center">{points}</td>
+                    ) : (
+                        <td id={total_type} colSpan="2" align="center"></td>
+                    )}
+                
+                {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
+                    if (item[0] !== this.props.name) {
+                        if (item[1][total_type] !== 0) {
+                            return <td colSpan="2" align="center">{item[1][total_type]}</td>
+                        } else {
+                            return <td colSpan="2"></td>
+                        }
+                    }
+                })}
+            </tr>
+        )
+    }
+
+    renderSeparator() {
+        return (
+            <tr id="separator">
+                <th colSpan="12">
+                    <h4></h4>
+                </th>
+            </tr>
+        )
+    }
     
     render(){
-        return(
+        return (
             <div className="Card">
                 
                 {(this.props.gameState.data.game_started) ? (
 
                 <table className="ScoreCardTable">
-                
-                    <tr id="CardUpper">
-                        <th colSpan="6">
-                            <h4>Upper Section</h4>
-                        </th>
-                        <th colSpan="2">
-                            <h4>Scores</h4>
-                        </th>
-                    </tr>
 
-                    <tr id="PlayerNames">
-                        <th colSpan="2"></th>
-                        <th colSpan="2">{this.props.name}</th>
-                        {Object.entries(this.props.gameState.data.scorecards).map( (item) => {
-                            if(this.props.name != item[0]){
-                                return <th colSpan="2">{item[0]}</th>
-                            }
-                        })}
-                    </tr>
+                    {this.renderPlayerNames()}
+                    {this.renderScoreRow("ONES", "Ones")}
+                    {this.renderScoreRow("TWOS", "Twos")}
+                    {this.renderScoreRow("THREES", "Threes")}
+                    {this.renderScoreRow("FOURS", "Fours")}
+                    {this.renderScoreRow("FIVES", "Fives")}
+                    {this.renderScoreRow("SIXES", "Sixes")}
 
-                    <tr id="ONES">
-                        <td>Ones</td>
-                        <td id="ONES" colSpan="2" onClick={this.chooseScore}>
-                            {this.props.gameState.data.scorecards[this.props.name].scores["ONES"]}
-                        </td>
+                    {this.renderTotalRow("UPPER_BONUS", "Upper Bonus")}
+                    {this.renderTotalRow("UPPER_TOTAL", "Upper Total")}
 
-                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
-                            if(item[0] != this.props.name){
-                                return <td colSpan="2">
-                                    {item[1].scores["ONES"]}
-                                </td>
-                            }
-                        })}
-                    </tr>
+                    {this.renderSeparator()}
 
-                    <tr id="TWOS">
-                        <td>Twos</td>
-                        <td id="TWOS" colSpan="2" onClick={this.chooseScore}>
-                            {this.props.gameState.data.scorecards[this.props.name].scores["TWOS"]}
-                        </td>
+                    {this.renderScoreRow("THREE_OF_A_KIND", "Three of a Kind")}
+                    {this.renderScoreRow("FOUR_OF_A_KIND", "Four of a Kind")}
+                    {this.renderScoreRow("FULL_HOUSE", "Full House")}
+                    {this.renderScoreRow("SMALL_STRAIGHT", "Small Straight")}
+                    {this.renderScoreRow("LARGE_STRAIGHT", "Large Straight")}
+                    {this.renderScoreRow("YAHTZEE", "Yahtzee")}
+                    {this.renderScoreRow("CHANCE", "Chance")}
 
-                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
-                            if(item[0] != this.props.name){
-                                return <td colSpan="2">
-                                    {item[1].scores["TWOS"]}
-                                </td>
-                            }
-                        })}
-                    </tr>
+                    {this.renderScoreRow("YAHTZEE_BONUS_TOTAL", "Yahtzee Bonus Total")}
+                    {this.renderTotalRow("LOWER_TOTAL", "Lower Total")}
 
-                    <tr id="THREES">
-                        <td>Threes</td>
-                        <td id="THREES" colSpan="2" onClick={this.chooseScore}>
-                            {this.props.gameState.data.scorecards[this.props.name].scores["THREES"]}
-                        </td>
-                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
-                            if(item[0] != this.props.name){
-                                return <td colSpan="2">
-                                    {item[1].scores["THREES"]}
-                                </td>
-                            }
-                        })}
-                    </tr>
+                    {this.renderSeparator()}
 
-                    <tr id="FOURS">
-                        <td>Fours</td>
-                        <td id="FOURS" colSpan="2" onClick={this.chooseScore}>
-                            {this.props.gameState.data.scorecards[this.props.name].scores["FOURS"]}
-                        </td>
-                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
-                            if(item[0] != this.props.name){
-                                return <td colSpan="2">
-                                    {item[1].scores["FOURS"]}
-                                </td>
-                            } 
-                        })}
-                    </tr>
-
-                    <tr id="FIVES">
-                        <td>Fives</td>
-                        <td id="FIVES" colSpan="2" onClick={this.chooseScore}>
-                            {this.props.gameState.data.scorecards[this.props.name].scores["FIVES"]}
-                        </td>
-                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
-                            if(item[0] != this.props.name){
-                                return <td colSpan="2">
-                                    {item[1].scores["FIVES"]}
-                                </td>
-                            }
-                        })}
-                    </tr>
-
-                    <tr id="SIXES">
-                        <td>Sixes</td>
-                        <td id="SIXES" colSpan="2" onClick={this.chooseScore}>
-                            {this.props.gameState.data.scorecards[this.props.name].scores["SIXES"]}
-                        </td>
-                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
-                            if(item[0] != this.props.name){
-                                return <td colSpan="2">
-                                    {item[1].scores["SIXES"]}
-                                </td>
-                            }
-                        })}
-                    </tr>
-
-                    <tr id="UpperBonus">
-                        <td>Upper Bonus</td>
-                        <td colSpan="2">{}</td>
-
-                    </tr>
-
-                    <tr id="UpperTotalWBonus">
-                        <td>Upper Total</td>
-                        <td colSpan="2">{}</td>
-
-                    </tr>
-
-                    <tr id="CardLower">
-                        <th colSpan="6">
-                            <h4>Lower Section</h4>
-                        </th>
-
-                    </tr>
-
-                    <tr id="THREE_OF_A_KIND">
-                        <td>3 of a Kind</td>
-                        <td id="THREE_OF_A_KIND" colSpan="2" onClick={this.chooseScore}>
-                            {this.props.gameState.data.scorecards[this.props.name].scores["THREE_OF_A_KIND"]}
-                        </td>
-                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
-                            if(item[0] != this.props.name){
-                                return <td colSpan="2">
-                                    {item[1].scores["THREE_OF_A_KIND"]}
-                                </td>
-                            }
-                        })}
-                    </tr>
-
-                    <tr id="FOUR_OF_A_KIND">
-                        <td>4 of a Kind</td>
-                        <td id="FOUR_OF_A_KIND" colSpan="2" onClick={this.chooseScore}>
-                            {this.props.gameState.data.scorecards[this.props.name].scores["FOUR_OF_A_KIND"]}
-                        </td>
-                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
-                            if(item[0] != this.props.name){
-                                return <td colSpan="2">
-                                    {item[1].scores["FOUR_OF_A_KIND"]}
-                                </td>
-                            }
-                        })}
-                    </tr>
-
-                    <tr id="FULL_HOUSE">
-                        <td>Full House</td>
-                        <td id="FULL_HOUSE" colSpan="2" onClick={this.chooseScore}>
-                            {this.props.gameState.data.scorecards[this.props.name].scores["FULL_HOUSE"]}
-                        </td>
-                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
-                            if(item[0] != this.props.name){
-                                return <td colSpan="2">
-                                    {item[1].scores["FULL_HOUSE"]}
-                                </td>
-                            }  
-                        })}
-                    </tr>
-
-                    <tr id="SMALL_STRAIGHT">
-                        <td>Small Straight</td>
-                        <td id="SMALL_STRAIGHT" colSpan="2" onClick={this.chooseScore}>
-                            {this.props.gameState.data.scorecards[this.props.name].scores["SMALL_STRAIGHT"]}
-                        </td>
-                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
-                            if(item[0] != this.props.name){
-                                return <td colSpan="2">
-                                    {item[1].scores["SMALL_STRAIGHT"]}
-                                </td>
-                            }
-                            
-                        })}
-
-                    </tr>
-
-                    <tr id="LARGE_STRAIGHT">
-                        <td>Large Straight</td>
-                        <td id="LARGE_STRAIGHT" colSpan="2" onClick={this.chooseScore}>
-                            {this.props.gameState.data.scorecards[this.props.name].scores["LARGE_STRAIGHT"]}
-                        </td>
-                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
-                            if(item[0] != this.props.name){
-                                return <td colSpan="2">
-                                    {item[1].scores["LARGE_STRAIGHT"]}
-                                </td>
-                            }
-                            
-                        })}
-
-                    </tr>
-
-                    <tr id="YAHTZEE">
-                        <td>Yahtzee - Five of a Kind</td>
-                        <td id="YAHTZEE" colSpan="2" onClick={this.chooseScore}>
-                            {this.props.gameState.data.scorecards[this.props.name].scores["YAHTZEE"]}
-                        </td>
-                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
-                            if(item[0] != this.props.name){
-                                return <td colSpan="2">
-                                    {item[1].scores["YAHTZEE"]}
-                                </td>
-                            }
-                            
-                        })}
-                    </tr>
-
-                    <tr id="CHANCE">
-                        <td>Chance</td>
-                        <td id="CHANCE" colSpan="2" onClick={this.chooseScore}>
-                            {this.props.gameState.data.scorecards[this.props.name].scores["CHANCE"]}
-                        </td>
-                        {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
-                            if(item[0] != this.props.name){
-                                return <td colSpan="2">
-                                    {item[1].scores["CHANCE"]}
-                                </td>
-                            }
-                            
-                        })}
-
-                    </tr>
-
-                    <tr id="YahtzeeBonusTotal">
-                        <td>Yahtzee Bonus Total</td>
-                        <td colSpan="2">{}</td>
-                        
-
-                    </tr>
-
-                    <tr id="LowerTotal">
-                        <td>Lower Total</td>
-                        <td colSpan="2">{}</td>
-
-                    </tr>
-                    
-
-                    <tr id="GrandTotal">
-                        <td>Grand Total</td>
-                        <td colSpan="2">{}</td>
-
-                    </tr>
-                            
+                    {this.renderTotalRow("UPPER_TOTAL", "Upper Total")}
+                    {this.renderTotalRow("LOWER_TOTAL", "Lower Total")}
+                    {this.renderTotalRow("GRAND_TOTAL", "Grand Total")}   
                 </table>
                  
                 ) : null}
-
-
-
             </div>
         )
     }

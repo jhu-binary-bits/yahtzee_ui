@@ -40,7 +40,6 @@ class Card extends Component {
     }
 
     check_conditions(score_name){
-      console.log("Checking " + score_name)
       return this.props.gameState.data.game_started &&
         this.props.gameState.data.current_turn.player == this.props.name &&
         this.props.gameState.data.scorecards[this.props.name].scores[score_name] == null &&
@@ -249,7 +248,6 @@ class Card extends Component {
                         <td id="CHANCE" className= { this.props.gameState.data.scorecards[this.props.name].scores["CHANCE"] == null ? 'Column' : 'ColumnSelected' } colSpan="2" onClick={this.chooseScore}>
                           {this.check_conditions("CHANCE") ? (
                               this.props.gameState.data.current_turn.valid_scores["CHANCE"]
-
                           ) : (
                             this.props.gameState.data.scorecards[this.props.name].scores["CHANCE"]
                           )}

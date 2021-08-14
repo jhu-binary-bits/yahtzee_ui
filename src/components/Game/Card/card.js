@@ -47,11 +47,11 @@ class Card extends Component {
                 <table className="ScoreCardTable">
                 
                     <tr id="CardUpper">
-                        <th colSpan="2">
-                            <h3>Upper Section</h3>
+                        <th colSpan="6">
+                            <h4>Upper Section</h4>
                         </th>
                         <th colSpan="2">
-                            <h3>Scores</h3>
+                            <h4>Scores</h4>
                         </th>
                     </tr>
 
@@ -164,8 +164,8 @@ class Card extends Component {
                     </tr>
 
                     <tr id="CardLower">
-                        <th cols="2">
-                            <h3>Lower Section</h3>
+                        <th colSpan="6">
+                            <h4>Lower Section</h4>
                         </th>
 
                     </tr>

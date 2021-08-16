@@ -10,3 +10,12 @@
     border: 1px solid black;
     border-collapse: collapse;
 }
+.ColumnSelected{
+  color: black;
+  font-weight: bold;
+}
+
+.Column {
+  color: green;
+
+}

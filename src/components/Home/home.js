@@ -21,7 +21,7 @@ class Home extends Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.joinGame = this.joinGame.bind(this);
-        
+
     }
 
 
@@ -33,7 +33,7 @@ class Home extends Component {
         let event = JSON.parse(message.data);
         console.log("Received event:")
         console.log(event)
-        
+
         if (event.type === "game_state_update") {
             console.log("received game state update")
             this.setState({
@@ -47,7 +47,7 @@ class Home extends Component {
         console.log(this.state)
       };
     }
-    
+
     joinGame(bool) {
         console.log("Clicked join game");
         if (this.state.name !== "") {
@@ -71,10 +71,18 @@ class Home extends Component {
             name: event.target.value
         });
       }
-    
+
       handleSubmit(event) {
         console.log("A name was submitted " + this.state.name);
         event.preventDefault();
+      }
+
+    handleKeyPress(event){
+        var code = event.keyCode || event.which;
+        if (code === 13) {
+          this.joinGame(true);
+          console.log(this.state.name)
+        }
       }
 
     render() {
@@ -82,19 +90,19 @@ class Home extends Component {
         return(
             <div className="Home">
                 <div id="joinGame">
-                    {this.state.joinedGame ? 
-                        (<Game gameState={this.state.gameState} name={this.state.name}></Game>) 
+                    {this.state.joinedGame ?
+                        (<Game gameState={this.state.gameState} name={this.state.name}></Game>)
                          : (<Welcome joinedGame={this.state.joinedGame}></Welcome>) }
-                    {this.state.joinedGame ? null: 
+                    {this.state.joinedGame ? null:
                     <div id="gameComponent" onSubmit={this.handleSubmit}>
                         <label id="nameLabel">
                             Enter Name:
-                            <input type="text" value={this.state.name} onChange={this.handleChange} />
+                            <input type="text" value={this.state.name} onChange={this.handleChange} onKeyPress={this.handleKeyPress.bind(this)}/>
                         </label>
                         <input className="JoinGameButton" type="submit" value={this.state.playButton} onClick={this.joinGame.bind(null, true)}/>
                     </div>
                     }
-                    
+
                 </div>
             </div>
         )

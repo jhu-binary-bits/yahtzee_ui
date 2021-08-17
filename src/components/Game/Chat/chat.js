@@ -10,7 +10,7 @@ class Chat extends Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.submitChat = this.submitChat.bind(this);
-        
+
     }
 
     handleChange(event) {
@@ -18,6 +18,12 @@ class Chat extends Component {
         this.setState({
             message: event.target.value
         });
+      }
+    handleKeyPress(event){
+        var code = event.keyCode || event.which;
+        if (code === 13) {
+          this.submitChat();
+        }
       }
 
       submitChat(event){
@@ -45,13 +51,13 @@ class Chat extends Component {
                 <div className="ChatTitle" align="center">
                     Game Chat
                 </div>
-                
+
                 <div className="ChatSpace">
                     <textarea id="chatSpace" type="text" value={this.props.gameState.data.chat_transcript}></textarea>
                 </div>
                 <div>
                 <div className="ChatTyping">
-                    <textarea  id="chatTyping"  type="text" value={this.state.message} onChange={this.handleChange}></textarea>
+                    <textarea  id="chatTyping"  type="text" value={this.state.message} onChange={this.handleChange} onKeyPress={this.handleKeyPress.bind(this)}></textarea>
                 </div>
 
                 <div >

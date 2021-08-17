@@ -7,7 +7,7 @@ class Card extends Component {
     constructor(props){
         super(props)
         console.log("Card constructor called")
-        
+
         this.chooseScore = this.chooseScore.bind(this)
 
         this.renderPlayerNames = this.renderPlayerNames.bind(this)
@@ -22,12 +22,13 @@ class Card extends Component {
 
     chooseScore(event) {
         console.log("Clicked on " + event.target.id + "  cell")
-        
-        if (this.props.gameState.data.scorecards[this.props.name].scores[event.target.id] === null 
-            && this.props.gameState.data.current_turn.player === this.props.name) {
+
+        if (this.props.gameState.data.scorecards[this.props.name].scores[event.target.id] === null
+            && this.props.gameState.data.current_turn.player === this.props.name
+            && this.props.gameState.data.current_turn.roll_count != 0) {
             document.getElementById(event.target.id).style.fontWeight = "bold"
 
-            this.publish_score_selected_event(event.target.id)            
+            this.publish_score_selected_event(event.target.id)
         }
     }
 
@@ -59,12 +60,16 @@ class Card extends Component {
 
     renderScoreRow(score_type, score_string) {
         return (
+
             <tr id="score">
                 <td>{score_string}</td>
-                <td id={score_type} colSpan="2" onClick={this.chooseScore} align="center">
-                    {this.props.gameState.data.scorecards[this.props.name].scores[score_type]}
+                <td id={score_type} align="center" className= { this.props.gameState.data.scorecards[this.props.name].scores[score_type] == null ? 'Column' : 'ColumnSelected' } colSpan="2" onClick={this.chooseScore}>
+                  {this.check_conditions(score_type) ? (
+                      this.props.gameState.data.current_turn.valid_scores[score_type]
+                  ) : (
+                    this.props.gameState.data.scorecards[this.props.name].scores[score_type]
+                  )}
                 </td>
-
                 {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
                     if (item[0] !== this.props.name){
                         return <td colSpan="2" align="center">
@@ -76,9 +81,18 @@ class Card extends Component {
         )
     }
 
+    check_conditions(score_name){
+      return this.props.gameState.data.game_started &&
+        this.props.gameState.data.current_turn.player == this.props.name &&
+        this.props.gameState.data.scorecards[this.props.name].scores[score_name] == null &&
+        this.props.gameState.data.current_turn.roll_count != 0 &&
+        this.props.gameState.data.current_turn.valid_scores[score_name] != 0
+    }
+
     renderTotalRow(total_type, total_string) {
         let points = this.props.gameState.data.scorecards[this.props.name][total_type]
         return (
+
             <tr id="total">
                 <td>{total_string}</td>
                     {(points !== 0) ? (
@@ -86,7 +100,7 @@ class Card extends Component {
                     ) : (
                         <td id={total_type} colSpan="2" align="center"></td>
                     )}
-                
+
                 {Object.entries(this.props.gameState.data.scorecards).map((item, index) => {
                     if (item[0] !== this.props.name) {
                         if (item[1][total_type] !== 0) {
@@ -97,6 +111,7 @@ class Card extends Component {
                     }
                 })}
             </tr>
+
         )
     }
 
@@ -109,11 +124,11 @@ class Card extends Component {
             </tr>
         )
     }
-    
+
     render(){
         return (
             <div className="Card">
-                
+
                 {(this.props.gameState.data.game_started) ? (
 
                 <table className="ScoreCardTable">
@@ -146,9 +161,9 @@ class Card extends Component {
 
                     {this.renderTotalRow("UPPER_TOTAL", "Upper Total")}
                     {this.renderTotalRow("LOWER_TOTAL", "Lower Total")}
-                    {this.renderTotalRow("GRAND_TOTAL", "Grand Total")}   
+                    {this.renderTotalRow("GRAND_TOTAL", "Grand Total")}
                 </table>
-                 
+
                 ) : null}
             </div>
         )

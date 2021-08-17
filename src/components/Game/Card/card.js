@@ -24,7 +24,8 @@ class Card extends Component {
         console.log("Clicked on " + event.target.id + "  cell")
 
         if (this.props.gameState.data.scorecards[this.props.name].scores[event.target.id] === null
-            && this.props.gameState.data.current_turn.player === this.props.name) {
+            && this.props.gameState.data.current_turn.player === this.props.name
+            && this.props.gameState.data.current_turn.roll_count != 0) {
             document.getElementById(event.target.id).style.fontWeight = "bold"
 
             this.publish_score_selected_event(event.target.id)
@@ -84,7 +85,8 @@ class Card extends Component {
       return this.props.gameState.data.game_started &&
         this.props.gameState.data.current_turn.player == this.props.name &&
         this.props.gameState.data.scorecards[this.props.name].scores[score_name] == null &&
-        this.props.gameState.data.current_turn.roll_count != 0
+        this.props.gameState.data.current_turn.roll_count != 0 &&
+        this.props.gameState.data.current_turn.valid_scores[score_name] != 0
     }
 
     renderTotalRow(total_type, total_string) {

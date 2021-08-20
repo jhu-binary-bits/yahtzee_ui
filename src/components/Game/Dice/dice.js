@@ -7,7 +7,7 @@ import roll3 from './images/roll3.jpg';
 import roll4 from './images/roll4.jpg';
 import roll5 from './images/roll5.jpg';
 import roll6 from './images/roll6.jpg';
-
+import roll_dice_sound from './roll_dice.wav';
 
 class Dice extends Component {
 
@@ -59,6 +59,8 @@ class Dice extends Component {
 
     rollDice(event) {
       console.log("The roll dice button was clicked");
+      let audio = new Audio(roll_dice_sound);
+      audio.play();
       const selectedDice = []
       for (let selection in this.state.dicegroup){
         if(this.state.dicegroup[selection].selected == true ||

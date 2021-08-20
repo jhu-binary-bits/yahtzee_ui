@@ -154,7 +154,7 @@ class Card extends Component {
                     {this.renderScoreRow("YAHTZEE", "Yahtzee")}
                     {this.renderScoreRow("CHANCE", "Chance")}
 
-                    {this.renderScoreRow("YAHTZEE_BONUS_TOTAL", "Yahtzee Bonus Total")}
+                    {this.renderTotalRow("yahtzee_bonus", "Yahtzee Bonus Total")}
                     {this.renderTotalRow("LOWER_TOTAL", "Lower Total")}
 
                     {this.renderSeparator()}
